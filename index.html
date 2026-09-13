@@ -1,61 +1,495 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#073b4c" />
-  <title>JanSaathi — Civic Grievance Demo</title>
+  <title>JanSaathi — Smart Civic Grievance & Resolution System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-:root{--ink:#073b4c;--ink2:#0a4e61;--mint:#e5f6ef;--cream:#fbf7ec;--coral:#ef765b;--gold:#f7c948;--slate:#52636b;--line:#d8e2df;--white:#fff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream)}button,input,select,textarea{font:inherit}.app-shell{overflow:hidden}.topbar{height:76px;padding:0 clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;background:rgba(251,247,236,.94);position:sticky;z-index:10;top:0;backdrop-filter:blur(12px);border-bottom:1px solid #eee8d9}.brand{display:flex;gap:9px;align-items:center;text-decoration:none;color:var(--ink);font-size:22px;font-weight:700}.brand>span:last-child span{color:var(--coral)}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:var(--ink);color:var(--gold);font-family:'Playfair Display',serif}.nav{display:flex;gap:26px;align-items:center}.nav a{color:var(--slate);text-decoration:none;font-size:14px}.btn{border:0;cursor:pointer;border-radius:12px;padding:12px 18px;background:var(--ink);color:white;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn.small{padding:10px 15px}.btn.ghost{background:transparent;color:var(--ink)}.btn.primary{background:var(--coral);box-shadow:0 8px 22px #ef765b44}.btn.big{padding:16px 22px;font-size:15px}.menu-btn{display:none;background:none;border:0;font-size:24px;color:var(--ink)}.hero{min-height:620px;padding:76px clamp(20px,8vw,140px);display:grid;grid-template-columns:1.06fr .94fr;gap:48px;align-items:center;background:radial-gradient(circle at 80% 20%,#fce9a7 0 7%,transparent 25%),var(--cream)}.eyebrow{font-size:11px;letter-spacing:1.9px;font-weight:700;color:#cb5b43;margin:0 0 15px}.hero h1,h2,h3{margin:0;font-family:'Playfair Display',serif}.hero h1{font-size:clamp(42px,5vw,70px);line-height:1.04;letter-spacing:-2px}.hero h1 em{color:var(--coral);font-weight:700}.lead{max-width:570px;color:var(--slate);font-size:17px;line-height:1.7;margin:25px 0}.hero-actions{display:flex;align-items:center;gap:22px}.text-link{border:0;background:none;color:var(--ink);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:5px}.demo-note{font-size:12px;color:#71827c;margin-top:28px}.hero-visual{height:390px;min-width:340px;border-radius:30px;background:#bde4d5;position:relative;overflow:hidden;box-shadow:20px 22px 0 #e7dcae}.sun{position:absolute;width:90px;height:90px;border-radius:50%;background:#f8c749;right:56px;top:38px}.cloud{position:absolute;width:95px;height:22px;border-radius:20px;background:#eaf7f1}.cloud:before,.cloud:after{content:'';position:absolute;background:inherit;border-radius:50%}.cloud:before{width:38px;height:38px;left:18px;top:-16px}.cloud:after{width:28px;height:28px;right:15px;top:-9px}.cloud-a{left:44px;top:78px}.cloud-b{right:25px;top:135px;transform:scale(.65)}.city{position:absolute;bottom:78px;left:0;right:0;height:140px;display:flex;align-items:end;gap:8px;padding:0 24px}.building{background:var(--ink2);width:17%;border-radius:5px 5px 0 0;box-shadow:inset 0 11px #ffffff2e}.b1{height:80px}.b2{height:120px}.b3{height:98px}.b4{height:137px}.b5{height:70px}.road{height:88px;background:#f6e5ae;position:absolute;bottom:-45px;left:-15%;right:-15%;transform:rotate(-6deg);border-top:5px dashed #fff9df}.pin{position:absolute;width:45px;height:45px;display:grid;place-items:center;color:var(--coral);font-size:35px;text-shadow:0 1px #fff}.pin small{position:absolute;font:700 10px 'DM Sans';color:var(--ink);background:#fff;border-radius:8px;padding:3px 6px;top:37px;white-space:nowrap;text-shadow:none}.citizen-pin{left:34%;bottom:115px}.officer-pin{right:21%;bottom:85px;color:var(--ink)}.route-line{position:absolute;left:39%;right:24%;bottom:124px;border-top:3px dashed var(--coral);transform:rotate(12deg)}.route-card{position:absolute;bottom:22px;left:24px;right:24px;background:white;border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 20px #073b4c20}.route-card small{display:block;color:var(--slate);font-size:11px;margin-top:2px}.route-icon{background:var(--mint);padding:8px;border-radius:9px}.check{margin-left:auto;background:#dff4e7;color:#268450;border-radius:50%;width:23px;height:23px;text-align:center}.section{padding:96px clamp(20px,8vw,140px)}.centered{text-align:center}.process h2{text-align:center;font-size:38px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:46px}.steps article{padding:28px;border:1px solid var(--line);border-radius:18px;background:#fffdfa;position:relative}.steps article>span{position:absolute;top:19px;right:20px;color:#c9d2ce;font-weight:700}.step-icon{font-size:30px;margin-bottom:18px}.steps h3{font-size:22px}.steps p{line-height:1.6;color:var(--slate);font-size:14px}.feature-band{background:var(--ink);color:white;padding:76px clamp(20px,8vw,140px);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}.feature-band h2,.cta h2{font-size:38px;line-height:1.15}.feature-band p:not(.eyebrow){line-height:1.7;color:#c3dad6;max-width:500px}.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.feature-grid span{border:1px solid #ffffff2b;padding:18px;border-radius:13px;color:#eef9f5;font-size:14px}.cta{margin:58px auto;max-width:1100px;border-radius:24px;padding:45px clamp(25px,5vw,65px);background:#f5c949;display:flex;justify-content:space-between;align-items:center;gap:25px}.cta .eyebrow{color:#805c09}footer{padding:25px clamp(20px,8vw,140px);display:flex;justify-content:space-between;gap:15px;font-size:12px;color:#6a7774;border-top:1px solid #e3dfd1}.modal-backdrop{position:fixed;inset:0;z-index:20;background:#063541aa;display:grid;place-items:center;padding:18px}.modal-backdrop.hidden,.hidden{display:none}.modal{position:relative;width:min(680px,100%);max-height:92vh;overflow:auto;background:#fffdf9;border-radius:24px;padding:34px;box-shadow:0 20px 80px #001e28aa}.close{position:absolute;right:18px;top:12px;border:0;background:none;font-size:29px;color:var(--slate);cursor:pointer}.modal h2{font-size:30px;margin-bottom:6px}.modal .sub{color:var(--slate);font-size:14px;line-height:1.5;margin:0 0 22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;color:#34515a}.field.full{grid-column:1/-1}.field input,.field select,.field textarea{border:1px solid #cbd9d5;border-radius:10px;padding:11px;color:var(--ink);background:white;outline-color:var(--coral)}.field textarea{min-height:98px;resize:vertical}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.notice{font-size:12px;background:#fff2d5;color:#795600;padding:10px 12px;border-radius:9px;margin:14px 0}.otp-row{display:flex;gap:8px;align-items:end}.otp-row input{flex:1}.outline-btn{background:white;color:var(--ink);border:1px solid #a8beb7;padding:10px 12px}.photo-preview{display:flex;align-items:center;gap:12px;padding:10px;background:#f3f7f5;border-radius:11px;font-size:12px}.avatar{width:45px;height:45px;border-radius:50%;object-fit:cover;background:#d8eee7;display:grid;place-items:center;font-weight:700;color:var(--ink)}.dashboard{min-height:100vh;background:#f3f7f5}.dash-header{padding:18px clamp(20px,5vw,72px);background:#fffdf9;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dce7e3}.user-chip{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}.dash-layout{max-width:1280px;margin:auto;padding:30px clamp(18px,5vw,70px)}.dash-title{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.dash-title h1{font-size:37px}.dash-title p{margin:4px 0;color:var(--slate)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.stat{background:#fff;border-radius:15px;padding:17px;border:1px solid #dce9e4}.stat b{font:700 27px 'Playfair Display'}.stat span{display:block;font-size:12px;color:var(--slate);margin-top:5px}.dash-columns{display:grid;grid-template-columns:1.28fr .72fr;gap:20px;margin-top:20px}.panel{background:#fff;border:1px solid #dce9e4;border-radius:18px;padding:22px}.panel h3{font-size:22px}.complaint-card{border:1px solid #dce9e4;border-radius:14px;padding:16px;margin-top:14px;cursor:pointer;transition:.2s}.complaint-card:hover{border-color:var(--coral);box-shadow:0 8px 20px #073b4c0d}.card-top{display:flex;justify-content:space-between;gap:8px}.badge{display:inline-block;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:700;background:#e5f6ef;color:#187050}.badge.orange{background:#fff0dc;color:#a45d00}.badge.blue{background:#e3effe;color:#20589c}.complaint-card p{font-size:12px;color:var(--slate);margin:7px 0}.mini-progress{height:5px;background:#e7eeeb;border-radius:4px;overflow:hidden;margin-top:10px}.mini-progress span{display:block;height:100%;width:45%;background:var(--coral)}.officer-mini{display:flex;gap:10px;align-items:center;margin-top:16px;background:var(--mint);padding:12px;border-radius:12px;font-size:12px}.officer-mini small{display:block;color:var(--slate);margin-top:2px}.empty{padding:34px 8px;text-align:center;color:var(--slate);font-size:14px}.complaint-flow{width:min(880px,100%)}.mode-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}.mode-tab{border:1px solid #d5e2de;background:white;border-radius:11px;padding:12px 8px;color:var(--slate);cursor:pointer;text-align:left;font-size:12px}.mode-tab.active{background:var(--ink);color:white;border-color:var(--ink)}.mode-tab b{display:block;font-size:14px;margin-bottom:3px}.record-box{background:#f2f7f4;border:1px dashed #9bb8af;border-radius:13px;padding:16px;display:flex;align-items:center;gap:14px;font-size:13px}.record-btn{width:48px;height:48px;border-radius:50%;border:0;background:var(--coral);color:white;font-size:22px;cursor:pointer}.attachment{border:1px dashed #9bb8af;border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:space-between;font-size:12px}.attach-list{font-size:12px;color:#268450;margin:7px 0}.location-box{margin-top:12px;background:#e9f5ef;border-radius:11px;padding:12px;font-size:12px}.map-preview{height:110px;margin-top:9px;border-radius:8px;background:linear-gradient(125deg,#d1ebd9 20%,#f5e9bc 20% 28%,#b9d8e4 28% 35%,#d1ebd9 35% 55%,#f5e9bc 55% 62%,#d1ebd9 62%);position:relative;overflow:hidden}.map-preview:after{content:'● Demo location';position:absolute;left:45%;top:40%;color:var(--coral);font-weight:700}.detail{width:min(920px,100%)}.detail-head{display:flex;justify-content:space-between;gap:15px;padding-right:25px}.detail h2{font-size:30px}.route-result{margin:20px 0;padding:15px;border-radius:14px;background:var(--mint);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}.route-result p{font-size:12px;margin:2px 0;color:var(--slate)}.detail-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.info-box{border:1px solid #dce9e4;border-radius:13px;padding:15px;margin-bottom:14px}.info-box h4{margin:0 0 10px;font-family:'Playfair Display';font-size:18px}.timeline{position:relative;padding-left:22px}.timeline:before{content:'';position:absolute;left:5px;top:7px;bottom:7px;width:2px;background:#c8ddd6}.timeline div{position:relative;padding:0 0 18px;font-size:12px;color:var(--slate)}.timeline div:before{content:'';position:absolute;left:-21px;top:3px;width:10px;height:10px;border-radius:50%;background:#4ab580;border:3px solid #e5f6ef}.timeline b{color:var(--ink);display:block;margin-bottom:3px}.contact-card{display:flex;gap:11px;align-items:center}.contact-card .avatar{width:52px;height:52px}.contact-card p{margin:2px 0;font-size:12px;color:var(--slate)}.contact-actions{display:flex;gap:8px;margin-top:12px}.contact-actions button{padding:8px 11px;font-size:12px}.proof-stage{background:#f7faf8;border:1px dashed #9bb8af;border-radius:11px;padding:12px;font-size:12px}.sla{display:flex;justify-content:space-between;align-items:center;font-size:12px}.sla strong{font-size:18px;color:var(--coral)}.rating span{font-size:25px;color:#d2d9d6;cursor:pointer}.rating span.selected{color:var(--gold)}.toast{position:fixed;z-index:30;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:10px;padding:12px 16px;font-size:13px;box-shadow:0 8px 25px #001e2855}
-@media(max-width:760px){.nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fffdf9;padding:16px 20px;flex-direction:column;align-items:stretch;box-shadow:0 10px 20px #001e2815}.nav.open{display:flex}.menu-btn{display:block}.hero{grid-template-columns:1fr;padding-top:55px}.hero-visual{height:330px;min-width:0}.steps,.feature-band,.dash-columns,.detail-grid{grid-template-columns:1fr}.feature-band{gap:30px}.cta{margin:30px 18px;align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr 1fr}.dash-title{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.mode-tabs{grid-template-columns:1fr}.detail-head{flex-direction:column}.route-result{grid-template-columns:auto 1fr}.route-result .badge{grid-column:2}.hero-actions{align-items:flex-start;flex-direction:column}footer{flex-direction:column}.modal{padding:27px 20px}.hero h1{letter-spacing:-1px}}
+:root{--ink:#073b4c;--ink2:#0a4e61;--mint:#e5f6ef;--cream:#fbf7ec;--coral:#ef765b;--gold:#f7c948;--slate:#52636b;--line:#d8e2df;--white:#fff;--tricolor-orange:#ff9933;--tricolor-green:#138808}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream);transition:background .3s ease}
+button,input,select,textarea{font:inherit}
+.app-shell{overflow:hidden}
+.topbar{height:78px;padding:0 clamp(16px,4vw,60px);display:flex;align-items:center;justify-content:space-between;background:rgba(251,247,236,.96);position:sticky;z-index:20;top:0;backdrop-filter:blur(12px);border-bottom:1px solid #e7ded0}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);font-size:22px;font-weight:700}
+.brand>span:last-child span{color:var(--coral)}
+.brand-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--ink);color:var(--gold);font-family:'Playfair Display',serif;font-size:18px;box-shadow:0 4px 10px rgba(7,59,76,.15)}
+.nav{display:flex;gap:20px;align-items:center}
+.nav a{color:var(--slate);text-decoration:none;font-size:14px;font-weight:500;transition:.2s}
+.nav a:hover{color:var(--coral)}
+.lang-select{border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:white;font-size:13px;color:var(--ink);font-weight:600;outline:none;cursor:pointer}
+.btn{border:0;cursor:pointer;border-radius:12px;padding:12px 18px;background:var(--ink);color:white;font-weight:700;transition:.2s;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.small{padding:9px 15px;font-size:13px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid transparent}
+.btn.ghost:hover{background:rgba(7,59,76,.05)}
+.btn.primary{background:var(--coral);box-shadow:0 8px 22px #ef765b44}
+.btn.big{padding:16px 24px;font-size:15px}
+.menu-btn{display:none;background:none;border:0;font-size:24px;color:var(--ink);cursor:pointer}
+.hero{min-height:620px;padding:70px clamp(20px,6vw,120px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:radial-gradient(circle at 80% 20%,#fce9a7 0 9%,transparent 28%),var(--cream)}
+.eyebrow{font-size:12px;letter-spacing:1.8px;font-weight:700;color:#cb5b43;margin:0 0 14px;text-transform:uppercase}
+.hero h1,h2,h3{margin:0;font-family:'Playfair Display',serif}
+.hero h1{font-size:clamp(40px,4.8vw,66px);line-height:1.08;letter-spacing:-1.5px}
+.hero h1 em{color:var(--coral);font-style:italic}
+.lead{max-width:570px;color:var(--slate);font-size:17px;line-height:1.7;margin:24px 0}
+.hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.text-link{border:0;background:none;color:var(--ink);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:5px}
+.demo-note{font-size:12.5px;color:#71827c;margin-top:26px}
+.hero-visual{height:400px;min-width:320px;border-radius:28px;background:#bde4d5;position:relative;overflow:hidden;box-shadow:18px 20px 0 #e7dcae}
+.sun{position:absolute;width:86px;height:86px;border-radius:50%;background:#f8c749;right:50px;top:36px}
+.cloud{position:absolute;width:95px;height:22px;border-radius:20px;background:#eaf7f1}
+.cloud:before,.cloud:after{content:'';position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:38px;height:38px;left:18px;top:-16px}
+.cloud:after{width:28px;height:28px;right:15px;top:-9px}
+.cloud-a{left:44px;top:78px}
+.cloud-b{right:25px;top:135px;transform:scale(.65)}
+.city{position:absolute;bottom:78px;left:0;right:0;height:140px;display:flex;align-items:end;gap:8px;padding:0 24px}
+.building{background:var(--ink2);width:17%;border-radius:5px 5px 0 0;box-shadow:inset 0 11px #ffffff2e}
+.b1{height:80px}.b2{height:120px}.b3{height:98px}.b4{height:137px}.b5{height:70px}
+.road{height:88px;background:#f6e5ae;position:absolute;bottom:-45px;left:-15%;right:-15%;transform:rotate(-6deg);border-top:5px dashed #fff9df}
+.pin{position:absolute;width:45px;height:45px;display:grid;place-items:center;color:var(--coral);font-size:35px}
+.pin small{position:absolute;font:700 10px 'DM Sans';color:var(--ink);background:#fff;border-radius:8px;padding:3px 6px;top:37px;white-space:nowrap}
+.citizen-pin{left:34%;bottom:115px}
+.officer-pin{right:21%;bottom:85px;color:var(--ink)}
+.route-line{position:absolute;left:39%;right:24%;bottom:124px;border-top:3px dashed var(--coral);transform:rotate(12deg)}
+.route-card{position:absolute;bottom:20px;left:20px;right:20px;background:white;border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 20px #073b4c20}
+.route-card small{display:block;color:var(--slate);font-size:11px}
+.route-icon{background:var(--mint);padding:8px;border-radius:9px}
+.check{margin-left:auto;background:#dff4e7;color:#268450;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-weight:700}
+.section{padding:90px clamp(20px,6vw,120px)}
+.centered{text-align:center}
+.process h2{text-align:center;font-size:38px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px}
+.steps article{padding:28px;border:1px solid var(--line);border-radius:18px;background:#fffdfa;position:relative}
+.steps article>span{position:absolute;top:19px;right:20px;color:#c9d2ce;font-weight:700}
+.step-icon{font-size:32px;margin-bottom:16px}
+.steps h3{font-size:22px;margin-bottom:8px}
+.steps p{line-height:1.6;color:var(--slate);font-size:14px}
+.feature-band{background:var(--ink);color:white;padding:76px clamp(20px,6vw,120px);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.feature-band h2,.cta h2{font-size:36px;line-height:1.2}
+.feature-band p:not(.eyebrow){line-height:1.7;color:#c3dad6;max-width:500px}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.feature-grid span{border:1px solid #ffffff2b;padding:18px;border-radius:14px;color:#eef9f5;font-size:14px;display:flex;align-items:center;gap:8px}
+.cta{margin:54px auto;max-width:1120px;border-radius:24px;padding:45px clamp(24px,5vw,60px);background:#f5c949;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.cta .eyebrow{color:#805c09}
+footer{padding:25px clamp(20px,6vw,120px);display:flex;justify-content:space-between;gap:15px;font-size:12.5px;color:#6a7774;border-top:1px solid #e3dfd1;background:#fffdfa}
+.modal-backdrop{position:fixed;inset:0;z-index:90;background:#063541aa;display:grid;place-items:center;padding:18px;backdrop-filter:blur(4px)}
+.modal-backdrop.hidden,.hidden{display:none!important}
+.modal{position:relative;width:min(680px,100%);max-height:90vh;overflow-y:auto;background:#fffdf9;border-radius:24px;padding:32px;box-shadow:0 24px 80px #001e28bb}
+.close{position:absolute;right:18px;top:14px;border:0;background:none;font-size:28px;color:var(--slate);cursor:pointer}
+.modal h2{font-size:28px;margin-bottom:6px}
+.modal .sub{color:var(--slate);font-size:14px;line-height:1.5;margin:0 0 20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:700;color:#34515a}
+.field.full{grid-column:1/-1}
+.field input,.field select,.field textarea{border:1px solid #cbd9d5;border-radius:10px;padding:11px;color:var(--ink);background:white;outline-color:var(--coral)}
+.field textarea{min-height:95px;resize:vertical}
+.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.notice{font-size:12.5px;background:#fff2d5;color:#795600;padding:11px 14px;border-radius:10px;margin:14px 0;line-height:1.5}
+.otp-row{display:flex;gap:8px;align-items:end}
+.otp-row input{flex:1}
+.outline-btn{background:white;color:var(--ink);border:1px solid #a8beb7;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.outline-btn:hover{background:#f3f7f5}
+.avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;background:#d8eee7;display:grid;place-items:center;font-weight:700;color:var(--ink);flex-shrink:0}
 
+/* Dashboard & Reward Elements */
+.dashboard{min-height:100vh;background:#f3f7f5}
+.dash-header{padding:16px clamp(16px,4vw,60px);background:#fffdf9;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dce7e3}
+.user-chip{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700}
+.dash-layout{max-width:1280px;margin:auto;padding:28px clamp(16px,4vw,60px)}
+.dash-title{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px}
+.dash-title h1{font-size:36px}
+.dash-title p{margin:4px 0;color:var(--slate)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.stat{background:#fff;border-radius:16px;padding:16px;border:1px solid #dce9e4;box-shadow:0 3px 10px rgba(0,0,0,.02)}
+.stat b{font:700 26px 'Playfair Display';display:block}
+.stat span{display:block;font-size:12px;color:var(--slate);margin-top:4px}
+.stat.reward-stat{background:linear-gradient(135deg,#fffbf0,#fff4d6);border-color:#f8df95}
+.stat.reward-stat b{color:#9e6200}
+.badge-pill{display:inline-flex;align-items:center;gap:4px;background:#ffecd1;color:#b25e00;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:700}
+.dash-columns{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;margin-top:22px}
+.panel{background:#fff;border:1px solid #dce9e4;border-radius:18px;padding:22px}
+.panel h3{font-size:22px;margin-bottom:14px}
+.complaint-card{border:1px solid #dce9e4;border-radius:14px;padding:16px;margin-top:14px;cursor:pointer;transition:.2s;background:#fff}
+.complaint-card:hover{border-color:var(--coral);box-shadow:0 8px 20px #073b4c10;transform:translateY(-1px)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.badge{display:inline-block;border-radius:20px;padding:4px 9px;font-size:11px;font-weight:700;background:#e5f6ef;color:#187050}
+.badge.orange{background:#fff0dc;color:#a45d00}
+.badge.blue{background:#e3effe;color:#20589c}
+.complaint-card p{font-size:12.5px;color:var(--slate);margin:7px 0}
+.mini-progress{height:6px;background:#e7eeeb;border-radius:4px;overflow:hidden;margin-top:10px}
+.mini-progress span{display:block;height:100%;background:var(--coral);border-radius:4px}
+.officer-mini{display:flex;gap:12px;align-items:center;margin-top:14px;background:var(--mint);padding:12px;border-radius:12px;font-size:12.5px}
+.officer-mini small{display:block;color:var(--slate);margin-top:2px}
+.empty{padding:40px 12px;text-align:center;color:var(--slate);font-size:14px}
 
+/* Complaint Modal Special Elements */
+.complaint-flow{width:min(880px,100%)}
+.mode-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.mode-tab{border:1px solid #d5e2de;background:white;border-radius:12px;padding:12px 10px;color:var(--slate);cursor:pointer;text-align:left;font-size:12px;transition:.2s}
+.mode-tab.active{background:var(--ink);color:white;border-color:var(--ink)}
+.mode-tab b{display:block;font-size:13.5px;margin-bottom:3px}
+.record-box{background:#f2f7f4;border:1px dashed #9bb8af;border-radius:13px;padding:16px;display:flex;align-items:center;gap:14px;font-size:13px}
+.record-btn{width:46px;height:46px;border-radius:50%;border:0;background:var(--coral);color:white;font-size:22px;cursor:pointer;display:grid;place-items:center}
+.attachment{border:1px dashed #9bb8af;border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px}
+.attach-list{font-size:12px;color:#268450;margin:6px 0;font-weight:600}
+.location-box{margin-top:14px;background:#e9f5ef;border-radius:12px;padding:14px;font-size:12.5px}
+.map-preview{height:110px;margin-top:10px;border-radius:8px;background:linear-gradient(125deg,#d1ebd9 20%,#f5e9bc 20% 28%,#b9d8e4 28% 35%,#d1ebd9 35% 55%,#f5e9bc 55% 62%,#d1ebd9 62%);position:relative;overflow:hidden}
+.map-preview:after{content:'● Verified Geo-Tag Demo';position:absolute;left:40%;top:40%;color:var(--coral);font-weight:700}
+
+/* Detail Modal */
+.detail{width:min(920px,100%)}
+.detail-head{display:flex;justify-content:space-between;gap:15px;padding-right:20px;align-items:flex-start}
+.detail h2{font-size:28px}
+.route-result{margin:18px 0;padding:14px;border-radius:14px;background:var(--mint);display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.route-result p{font-size:12px;margin:2px 0;color:var(--slate)}
+.detail-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.info-box{border:1px solid #dce9e4;border-radius:14px;padding:16px;margin-bottom:14px;background:#fff}
+.info-box h4{margin:0 0 10px;font-family:'Playfair Display';font-size:18px}
+.timeline{position:relative;padding-left:22px}
+.timeline:before{content:'';position:absolute;left:5px;top:7px;bottom:7px;width:2px;background:#c8ddd6}
+.timeline div{position:relative;padding:0 0 16px;font-size:12.5px;color:var(--slate)}
+.timeline div:before{content:'';position:absolute;left:-21px;top:4px;width:10px;height:10px;border-radius:50%;background:#4ab580;border:3px solid #e5f6ef}
+.timeline b{color:var(--ink);display:block;margin-bottom:2px}
+.contact-card{display:flex;gap:12px;align-items:center}
+.contact-card .avatar{width:50px;height:50px}
+.contact-card p{margin:2px 0;font-size:12px;color:var(--slate)}
+.contact-actions{display:flex;gap:8px;margin-top:12px}
+.contact-actions button{padding:8px 12px;font-size:12px}
+.proof-stage{background:#f7faf8;border:1px dashed #9bb8af;border-radius:11px;padding:14px;font-size:12.5px}
+.sla{display:flex;justify-content:space-between;align-items:center;font-size:12.5px}
+.sla strong{font-size:18px;color:var(--coral)}
+.rating span{font-size:26px;color:#d2d9d6;cursor:pointer;transition:.15s}
+.rating span.selected{color:var(--gold)}
+.toast{position:fixed;z-index:100;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:10px;padding:12px 20px;font-size:13.5px;box-shadow:0 8px 25px #001e2855;display:flex;align-items:center;gap:10px}
+
+/* Guide modal styling */
+.guide-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.guide-tab-btn{border:0;background:#ede8dc;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;color:var(--ink)}
+.guide-tab-btn.active{background:var(--coral);color:white}
+.guide-step{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.guide-step-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:white;display:grid;place-items:center;font-weight:700;font-size:14px;flex-shrink:0}
+
+/* Celebration Dialog Box */
+.celebrate-card{text-align:center;padding:15px 10px}
+.celebrate-icon{font-size:55px;margin-bottom:12px;animation:bounce 1s infinite alternate}
+.patriotic-banner{background:linear-gradient(90deg,var(--tricolor-orange),#ffffff,var(--tricolor-green));height:4px;width:100%;margin:16px 0;border-radius:2px}
+.quote-box{font-style:italic;background:#fbf3e0;border-left:4px solid var(--gold);padding:14px 18px;border-radius:8px;margin:18px 0;color:#5a4305;font-size:14px;line-height:1.6}
+.reward-earned{display:inline-flex;align-items:center;gap:10px;background:#e5f6ef;color:#116f4e;padding:8px 18px;border-radius:30px;font-weight:700;font-size:15px;margin-bottom:12px}
+
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+
+/* Print Slip Styles */
+@media print{
+  body *{visibility:hidden}
+  #printSlipArea, #printSlipArea *{visibility:visible}
+  #printSlipArea{position:absolute;left:0;top:0;width:100%;padding:25px;background:white;color:black}
+  .no-print{display:none!important}
+}
+
+@media(max-width:880px){
+  .nav{display:none;position:absolute;top:78px;left:0;right:0;background:#fffdf9;padding:18px 20px;flex-direction:column;align-items:stretch;box-shadow:0 12px 25px #001e2815}
+  .nav.open{display:flex}
+  .menu-btn{display:block}
+  .hero{grid-template-columns:1fr;padding-top:40px}
+  .hero-visual{height:320px;min-width:0}
+  .steps,.feature-band,.dash-columns,.detail-grid{grid-template-columns:1fr}
+  .feature-band{gap:30px}
+  .cta{margin:30px 16px;align-items:flex-start;flex-direction:column}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .dash-title{align-items:flex-start;flex-direction:column}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .mode-tabs{grid-template-columns:1fr}
+  .detail-head{flex-direction:column}
+  .route-result{grid-template-columns:auto 1fr}
+  .hero-actions{align-items:flex-start;flex-direction:column}
+  footer{flex-direction:column}
+  .modal{padding:24px 18px}
+  .hero h1{letter-spacing:-1px}
+}
   </style>
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <a class="brand" href="#home" aria-label="JanSaathi home"><span class="brand-mark">ज</span><span>Jan<span>Saathi</span></span></a>
-      <nav id="nav" class="nav"><a href="#how">How it works</a><a href="#demo">Demo features</a><button class="btn ghost" data-action="open-login">Log in</button><button class="btn small" data-action="open-register">Register</button></nav>
+      <a class="brand" href="#home" aria-label="JanSaathi home">
+        <span class="brand-mark">ज</span>
+        <span>Jan<span>Saathi</span></span>
+      </a>
+      
+      <nav id="nav" class="nav">
+        <select id="langSwitch" class="lang-select" aria-label="Select Language">
+          <option value="en">English (EN)</option>
+          <option value="hi">हिंदी (Hindi)</option>
+          <option value="hinglish">Hinglish</option>
+          <option value="ur">اردو (Urdu)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+        </select>
+        <button class="btn ghost" data-action="open-guide">📖 <span data-i18n="nav_guide">User Manual</span></button>
+        <a href="#how" data-i18n="nav_how">How it works</a>
+        <button class="btn ghost" data-action="open-login" data-i18n="nav_login">Log in</button>
+        <button class="btn small" data-action="open-register" data-i18n="nav_register">Register</button>
+      </nav>
+
       <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     </header>
 
     <main id="app">
       <section id="home" class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">SIH 2026 • DEMO PROTOTYPE</p>
-          <h1>Your problem.<br><em>The right authority.</em><br>Faster resolution.</h1>
-          <p class="lead">JanSaathi makes civic grievances easy to report in the way that suits you — typed, spoken, or recorded — then demonstrates smart location-based routing with transparent follow-up.</p>
-          <div class="hero-actions"><button class="btn primary big" data-action="open-register">Report a civic issue <span>→</span></button><button class="text-link" data-action="open-login">I already have an account</button></div>
-          <p class="demo-note">✦ Safe demo: all IDs, officers, routing, OTPs and validation are simulated locally in your browser.</p>
+          <p class="eyebrow" data-i18n="hero_eyebrow">SIH 2026 • CIVIC EMPOWERMENT PROTOTYPE</p>
+          <h1 data-i18n="hero_title">Your problem.<br><em>The right authority.</em><br>Faster resolution.</h1>
+          <p class="lead" data-i18n="hero_lead">JanSaathi empowers every Indian citizen to voice civic issues effortlessly — typed, spoken, or recorded. Smart geospatial routing connects you to the right department while rewarding your active contribution to nation-building.</p>
+          <div class="hero-actions">
+            <button class="btn primary big" data-action="open-register"><span data-i18n="hero_cta">Report a civic issue</span> <span>→</span></button>
+            <button class="text-link" data-action="open-guide" data-i18n="hero_read_guide">Read User Manual</button>
+            <button class="text-link" data-action="open-login" data-i18n="hero_login_link">I already have an account</button>
+          </div>
+          <p class="demo-note" data-i18n="demo_notice">✦ Safe demo: simulated local workflow with patriotic citizen reward badges & receipt generation.</p>
         </div>
         <div class="hero-visual" aria-label="Illustration of citizen issue routing">
           <div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
           <div class="city"><span class="building b1"></span><span class="building b2"></span><span class="building b3"></span><span class="building b4"></span><span class="building b5"></span></div>
-          <div class="road"></div><div class="pin citizen-pin">●<small>You</small></div><div class="route-line"></div><div class="pin officer-pin">●<small>JE</small></div>
-          <div class="route-card"><span class="route-icon">⌖</span><div><b>Smart routing active</b><small>Ward 42 → Nagar Nigam</small></div><span class="check">✓</span></div>
+          <div class="road"></div><div class="pin citizen-pin">●<small data-i18n="visual_you">You</small></div><div class="route-line"></div><div class="pin officer-pin">●<small data-i18n="visual_je">JE</small></div>
+          <div class="route-card"><span class="route-icon">⌖</span><div><b data-i18n="visual_route_active">Smart routing active</b><small>Ward 42 → Nagar Nigam</small></div><span class="check">✓</span></div>
         </div>
       </section>
 
-      <section id="how" class="process section"><p class="eyebrow centered">BUILT FOR EVERY CITIZEN</p><h2>Speak up. We help find the way.</h2><div class="steps"><article><span>01</span><div class="step-icon">🎙</div><h3>Share your issue</h3><p>Type it, record a voice note, or use voice-to-text. Add a photo or video if useful.</p></article><article><span>02</span><div class="step-icon">⌖</div><h3>Route by location</h3><p>The demo maps your category and location to a mock department, ward and Junior Engineer.</p></article><article><span>03</span><div class="step-icon">◌</div><h3>Track every step</h3><p>Follow the SLA, proof checks and escalation trail. Rate the work when it is done.</p></article></div></section>
+      <section id="how" class="process section">
+        <p class="eyebrow centered" data-i18n="steps_eyebrow">BUILT FOR EVERY CITIZEN</p>
+        <h2 data-i18n="steps_heading">Speak up. We help find the way.</h2>
+        <div class="steps">
+          <article><span>01</span><div class="step-icon">🎙</div><h3 data-i18n="step1_title">Share your issue</h3><p data-i18n="step1_desc">Type, record a voice note in your mother tongue, or use AI voice-to-text. Add photos or GPS proof.</p></article>
+          <article><span>02</span><div class="step-icon">⌖</div><h3 data-i18n="step2_title">Route by location</h3><p data-i18n="step2_desc">JanSaathi maps the category to the exact department, ward jurisdiction, and field Junior Engineer.</p></article>
+          <article><span>03</span><div class="step-icon">⭐</div><h3 data-i18n="step3_title">Track & Earn Coins</h3><p data-i18n="step3_desc">Follow live SLA status, download an official receipt slip, and earn Desh Seva Coins for building a better India!</p></article>
+        </div>
+      </section>
 
-      <section id="demo" class="feature-band"><div><p class="eyebrow">DESIGNED FOR TRUST</p><h2>A civic process you can actually see.</h2><p>Transparent routing, shared contact details, location-aware proof and a clear escalation path—shown here with fictional local data for demonstration.</p></div><div class="feature-grid"><span>🔒 Local-only demo data</span><span>🗺 Geospatial routing mock</span><span>📍 GPS validation mock</span><span>⏱ SLA & escalation</span></div></section>
+      <section id="demo" class="feature-band">
+        <div>
+          <p class="eyebrow" data-i18n="feat_eyebrow">DESIGNED FOR TRUST & PATRIOTISM</p>
+          <h2 data-i18n="feat_title">A civic process you can actually see & verify.</h2>
+          <p data-i18n="feat_desc">Complete accountability with transparent officer contact, GPS geotag proof matching, PDF receipt slips, and reward stars for active citizens.</p>
+        </div>
+        <div class="feature-grid">
+          <span>🔒 Local-only demo privacy</span>
+          <span>🗺 Geospatial department routing</span>
+          <span>🎖 Desh Seva Citizen Coins</span>
+          <span>📄 Downloadable PDF/Print Slips</span>
+        </div>
+      </section>
 
-      <section class="cta"><div><p class="eyebrow">READY TO TRY THE FLOW?</p><h2>Bring your civic issue to JanSaathi.</h2></div><button class="btn primary big" data-action="open-register">Create demo account →</button></section>
+      <section class="cta">
+        <div>
+          <p class="eyebrow" data-i18n="cta_eyebrow">READY TO MAKE A DIFFERENCE?</p>
+          <h2 data-i18n="cta_title">Be a responsible citizen. Build a cleaner India.</h2>
+        </div>
+        <button class="btn primary big" data-action="open-register"><span data-i18n="cta_btn">Create demo account</span> →</button>
+      </section>
     </main>
-    <footer><span>JanSaathi • Smart India Hackathon 2026 concept demo</span><span>No government service or real communication is connected.</span></footer>
+
+    <footer>
+      <span>JanSaathi • Smart India Hackathon 2026 concept demo</span>
+      <span data-i18n="footer_rights">Dedicated to transparent governance & active citizen participation.</span>
+    </footer>
   </div>
 
-  <div class="modal-backdrop hidden" id="modal"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" data-action="close-modal" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+  <!-- Modal Container -->
+  <div class="modal-backdrop hidden" id="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" data-action="close-modal" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Hidden print area for official receipt -->
+  <div id="printSlipArea" class="hidden"></div>
   <div id="toast" class="toast hidden" role="status"></div>
+
   <script>
-/* JanSaathi demo: data remains in this browser's localStorage only. */
+/* JanSaathi Comprehensive Script with Multilingual, Gamification, and Receipt Generator */
 const $ = s => document.querySelector(s);
-const state = { mode: 'text', stream: null, recognition: null, rating: 0 };
+
+// Multilingual Translation Dictionary
+const I18N = {
+  en: {
+    nav_guide: "User Manual",
+    nav_how: "How it works",
+    nav_login: "Log in",
+    nav_register: "Register",
+    hero_eyebrow: "SIH 2026 • CIVIC EMPOWERMENT PROTOTYPE",
+    hero_title: "Your problem.<br><em>The right authority.</em><br>Faster resolution.",
+    hero_lead: "JanSaathi empowers every Indian citizen to voice civic issues effortlessly — typed, spoken, or recorded. Smart geospatial routing connects you to the right department while rewarding your active contribution to nation-building.",
+    hero_cta: "Report a civic issue",
+    hero_read_guide: "Read User Manual",
+    hero_login_link: "I already have an account",
+    demo_notice: "✦ Safe demo: simulated local workflow with patriotic citizen reward badges & receipt generation.",
+    visual_you: "You",
+    visual_je: "JE",
+    visual_route_active: "Smart routing active",
+    steps_eyebrow: "BUILT FOR EVERY CITIZEN",
+    steps_heading: "Speak up. We help find the way.",
+    step1_title: "Share your issue",
+    step1_desc: "Type, record a voice note in your mother tongue, or use AI voice-to-text. Add photos or GPS proof.",
+    step2_title: "Route by location",
+    step2_desc: "JanSaathi maps the category to the exact department, ward jurisdiction, and field Junior Engineer.",
+    step3_title: "Track & Earn Coins",
+    step3_desc: "Follow live SLA status, download an official receipt slip, and earn Desh Seva Coins for building a better India!",
+    feat_eyebrow: "DESIGNED FOR TRUST & PATRIOTISM",
+    feat_title: "A civic process you can actually see & verify.",
+    feat_desc: "Complete accountability with transparent officer contact, GPS geotag proof matching, PDF receipt slips, and reward stars for active citizens.",
+    cta_eyebrow: "READY TO MAKE A DIFFERENCE?",
+    cta_title: "Be a responsible citizen. Build a cleaner India.",
+    cta_btn: "Create demo account",
+    footer_rights: "Dedicated to transparent governance & active citizen participation."
+  },
+  hi: {
+    nav_guide: "उपयोग मार्गदर्शिका",
+    nav_how: "यह कैसे काम करता है",
+    nav_login: "लॉग इन",
+    nav_register: "पंजीकरण करें",
+    hero_eyebrow: "एसआईएच 2026 • नागरिक सशक्तिकरण प्रोटोटाइप",
+    hero_title: "आपकी समस्या।<br><em>सही विभाग।</em><br>शीघ्र निवारण।",
+    hero_lead: "जनसाथी प्रत्येक भारतीय नागरिक को अपनी नागरिक समस्याएं सरलता से दर्ज करने की सुविधा देता है — लिखकर, बोलकर या ऑडियो रिकॉर्ड करके। सही विभाग तक समस्या पहुँचाएं और देश निर्माण में भागीदार बनें।",
+    hero_cta: "नागरिक समस्या दर्ज करें",
+    hero_read_guide: "मार्गदर्शिका पढ़ें",
+    hero_login_link: "मेरे पास पहले से खाता है",
+    demo_notice: "✦ सुरक्षित डेमो: देश सेवा कॉइन्स और रसीद डाउनलोड के साथ ब्राउज़र आधारित कार्यप्रणाली।",
+    visual_you: "आप",
+    visual_je: "कनिष्ठ अभियंता",
+    visual_route_active: "स्मार्ट रूटिंग सक्रिय",
+    steps_eyebrow: "हर नागरिक के लिए निर्मित",
+    steps_heading: "अपनी आवाज उठाएं, समाधान हम ढूंढेंगे।",
+    step1_title: "समस्या साझा करें",
+    step1_desc: "लिखें, अपनी भाषा में वॉयस नोट रिकॉर्ड करें या एआई वॉयस-टू-टेक्स्ट का उपयोग करें।",
+    step2_title: "सटीक लोकेशन रूटिंग",
+    step2_desc: "जनसाथी समस्या श्रेणी और जीपीएस को सही विभाग और संबंधित जूनियर इंजीनियर से जोड़ता है।",
+    step3_title: "ट्रैक करें और कॉइन पाएं",
+    step3_desc: "लाइव स्थिति देखें, शिकायत की रसीद डाउनलोड करें और देश सेवा कॉइन्स व स्टार्स अर्जित करें!",
+    feat_eyebrow: "पारदर्शिता और राष्ट्र सेवा",
+    feat_title: "एक ऐसी प्रणाली जिस पर आप पूरा भरोसा कर सकें।",
+    feat_desc: "अधिकारियों की स्पष्ट जानकारी, फोटो जीपीएस सत्यापन, शिकायत रसीद और जागरूक नागरिकों के लिए सम्मान स्टार्स।",
+    cta_eyebrow: "क्या आप बदलाव के लिए तैयार हैं?",
+    cta_title: "एक जिम्मेदार नागरिक बनें। देश को स्वच्छ और सुंदर बनाएं।",
+    cta_btn: "डेमो खाता बनाएं",
+    footer_rights: "पारदर्शी शासन और जन भागीदारी को समर्पित।"
+  },
+  hinglish: {
+    nav_guide: "User Manual Guide",
+    nav_how: "Kaise kaam karta hai",
+    nav_login: "Log in",
+    nav_register: "Register karein",
+    hero_eyebrow: "SIH 2026 • DESH SEVA PROTOTYPE",
+    hero_title: "Aapki problem.<br><em>Sahi authority.</em><br>Jaldi solution.",
+    hero_lead: "JanSaathi ke sath civic issues report karna bilkul simple hai — likhkar, bolkar ya voice note record karke. Smart location routing se issue seedhe sahi department tak pahunchta hai aur aapko milte hain Desh Seva Coins!",
+    hero_cta: "Problem report karein",
+    hero_read_guide: "Manual padhein",
+    hero_login_link: "Mera account pehle se hai",
+    demo_notice: "✦ Safe browser demo: Desh Seva stars, coins aur official print receipt ke sath.",
+    visual_you: "Aap",
+    visual_je: "Junior Eng.",
+    visual_route_active: "Smart routing active",
+    steps_eyebrow: "EVERY CITIZEN KE LIYE",
+    steps_heading: "Aap aawaz uthaiye, hum rasta banayenge.",
+    step1_title: "Apni problem batayein",
+    step1_desc: "Type karein, voice note bhein ya bolkar speech-to-text se issue describe karein.",
+    step2_title: "Direct Department Routing",
+    step2_desc: "Category aur GPS location ke hisab se exact ward aur JE officer assign hota hai.",
+    step3_title: "Track karein & Rewards jeetein",
+    step3_desc: "Live SLA timer dekhein, print receipt download karein aur desh nirman ke Desh Seva Coins kamayein!",
+    feat_eyebrow: "TRUST AUR DESH BHAKTI",
+    feat_title: "Har step par complete transparency.",
+    feat_desc: "Officer contact details, live status tracking, before/after proof checks aur dedicated citizen reward points.",
+    cta_eyebrow: "DESH KE LIYE KUCH KAREIN?",
+    cta_title: "Ek zimmedar nagrik banein. Apne mohalle aur desh ko behtar banayein.",
+    cta_btn: "Demo account banayein",
+    footer_rights: "Transperant governance aur active citizen participation ke liye samarpit."
+  },
+  ur: {
+    nav_guide: "رہنمائے استعمال",
+    nav_how: "یہ کیسے کام کرتا ہے",
+    nav_login: "لاگ ان کریں",
+    nav_register: "رجسٹر کریں",
+    hero_eyebrow: "ایس آئی ایچ 2026 • شہری بااختیار پروٹو ٹائپ",
+    hero_title: "آپ کا مسئلہ۔<br><em>صحیح محکمہ۔</em><br>تیز تر حل۔",
+    hero_lead: "جن ساتھی ہر شہری کو اپنی شکایات آسانی سے درج کرانے کی سہولت دیتا ہے — لکھ کر، بول کر یا وائس نوٹ کے ذریعے۔ درست محکمے تک رسائی حاصل کریں اور دیش سیوا سکے حاصل کریں۔",
+    hero_cta: "شہری مسئلہ درج کریں",
+    hero_read_guide: "ہدایات پڑھیں",
+    hero_login_link: "میرا اکاؤنٹ پہلے سے ہے",
+    demo_notice: "✦ محفوظ ڈیمو: انعامی سکے اور رسید ڈاؤن لوڈ کے ساتھ خودکار نظام۔",
+    visual_you: "آپ",
+    visual_je: "جے ای",
+    visual_route_active: "اسمارٹ روٹنگ فعال",
+    steps_eyebrow: "ہر شہری کے لیے تیار کردہ",
+    steps_heading: "آواز اٹھائیں، حل ہم تلاش کریں گے۔",
+    step1_title: "مسئلہ بیان کریں",
+    step1_desc: "ٹائپ کریں، وائس نوٹ ریکارڈ کریں یا اسپیچ ٹو ٹیکسٹ کا استعمال کریں۔",
+    step2_title: "مقام کے مطابق روٹنگ",
+    step2_desc: "درست محکمہ، وارڈ اور جونیئر انجینئر کی نشاندہی خودکار طریقے سے ہوتی ہے۔",
+    step3_title: "ٹریک کریں اور انعامات پائیں",
+    step3_desc: "شکایت کی باضابطہ رسید ڈاؤن لوڈ کریں اور ملک کی بہتری کے لیے ستارے اور سکے حاصل کریں!",
+    feat_eyebrow: "اعتماد اور ملکی ترقی",
+    feat_title: "ایک شفاف اور قابل اعتماد عمل۔",
+    feat_desc: "افسران سے رابطہ، جی پی ایس تصدیق اور حب الوطنی کے ترغیبی اعزازات۔",
+    cta_eyebrow: "کیا آپ ملک کی خدمت کے لیے تیار ہیں؟",
+    cta_title: "ایک ذمہ دار شہری بنیں اور اپنے ملک کو بہتر بنائیں۔",
+    cta_btn: "ڈیمو اکاؤنٹ بنائیں",
+    footer_rights: "شفاف طرز حکمرانی اور عوامی شرکت کے لیے وقف۔"
+  },
+  bn: {
+    nav_guide: "ব্যবহার সহায়িকা",
+    nav_how: "এটি কীভাবে কাজ করে",
+    nav_login: "লগ ইন",
+    nav_register: "নিবন্ধন করুন",
+    hero_eyebrow: "এসআইএইচ ২০২৬ • নাগরিক ক্ষমতায়ন ডেমো",
+    hero_title: "আপনার সমস্যা।<br><em>সঠিক কর্তৃপক্ষ।</em><br>দ্রুত সমাধান।",
+    hero_lead: "জনসাথী প্রত্যেক নাগরিককে সহজে নাগরিক অভিযোগ জানাতে সাহায্য করে — টাইপ করে, মুখে বলে বা অডিও রেকর্ডিংয়ের মাধ্যমে। দেশ সেবার কয়েন অর্জন করুন এবং দেশ গড়ার কাজে অংশ নিন।",
+    hero_cta: "অভিযোগ দায়ের করুন",
+    hero_read_guide: "সহায়িকা পড়ুন",
+    hero_login_link: "আমার অ্যাকাউন্ট আছে",
+    demo_notice: "✦ নিরাপদ ডেমো: রসিদ ডাউনলোড ও দেশ সেবা কয়েন ব্যবস্থা সহ।",
+    visual_you: "আপনি",
+    visual_je: "জেই",
+    visual_route_active: "স্মার্ট রাউটিং সক্রিয়",
+    steps_eyebrow: "সকল নাগরিকের জন্য",
+    steps_heading: "কণ্ঠ তুলুন, সমাধানের পথ আমরা খুঁজে দেব।",
+    step1_title: "সমস্যা জানান",
+    step1_desc: "টাইপ করুন, ভয়েস রেকর্ড করুন বা ভয়েস-টু-টেক্সট ব্যবহার করুন।",
+    step2_title: "লোকেশন রাউটিং",
+    step2_desc: "সঠিক বিভাগ, ওয়ার্ড এবং জুনিয়র ইঞ্জিনিয়ারের কাছে স্বয়ংক্রিয়ভাবে পৌঁছাবে।",
+    step3_title: "ট্র্যাক ও কয়েন অর্জন",
+    step3_desc: "অফিসিয়াল স্লিপ ডাউনলোড করুন এবং দেশ সেবায় অবদান রেখে স্টার ও কয়েন পান!",
+    feat_eyebrow: "স্বচ্ছতা ও দেশপ্রেম",
+    feat_title: "একটি সম্পূর্ণ দৃশ্যমান নাগরিক প্রক্রিয়া।",
+    feat_desc: "অফিসারদের যোগাযোগ, জিপিএস যাচাইকরণ এবং নাগরিক পুরস্কার ব্যবস্থা।",
+    cta_eyebrow: "দেশ গঠনে অংশ নিতে প্রস্তুত?",
+    cta_title: "একজন দায়িত্বশীল নাগরিক হোন। সুন্দর ভারত গড়ে তুলুন।",
+    cta_btn: "ডেমো অ্যাকাউন্ট খুলুন",
+    footer_rights: "স্বচ্ছ শাসন এবং নাগরিক সহযোগিতায় নিবেদিত।"
+  }
+};
+
+const PATRIOTIC_QUOTES = [
+  { quote: "“देश को आगे बढ़ाने के लिए हर नागरिक का जागरूक होना सबसे बड़ी ताकत है।”", author: "JanSaathi Rashtra Nirman" },
+  { quote: "“Ask not what your country can do for you — ask what you can do for your country.”", author: "Citizen Duty" },
+  { quote: "“स्वच्छता और सुधार केवल सरकार का काम नहीं, हर जिम्मेदार नागरिक का संकल्प है।”", author: "Swachh & Sashakt Bharat" },
+  { quote: "“Alone we can do so little; together for our nation, we can build wonders.”", author: "Sashakt Nagrik" },
+  { quote: "“राष्ट्र सेवा का पहला कदम है — अपने आसपास की समस्याओं को सुधारने के लिए आवाज उठाना।”", author: "JanSaathi Mission" }
+];
+
+const state = { 
+  lang: localStorage.getItem('js_lang') || 'en', 
+  mode: 'text', 
+  stream: null, 
+  recognition: null, 
+  rating: 0 
+};
+
 const officers = {
   roads: { dept: 'Public Works Department (PWD)', ward: 'Ward 42 · Hazratganj Zone', officer: { name: 'Arjun Verma', post: 'Junior Engineer · Roads', mobile: '+91 98765 10428', initials: 'AV', color: '#d6ebe0' } },
   drainage: { dept: 'Nagar Nigam', ward: 'Ward 42 · Central Zone', officer: { name: 'Naina Singh', post: 'Junior Engineer · Sanitation', mobile: '+91 98765 20891', initials: 'NS', color: '#fde0d7' } },
@@ -64,39 +498,1013 @@ const officers = {
   water: { dept: 'Jal Kal Department', ward: 'Ward 42 · Central Zone', officer: { name: 'Meera Joshi', post: 'Junior Engineer · Water Works', mobile: '+91 98765 44520', initials: 'MJ', color: '#efe1f7' } },
   other: { dept: 'Nagar Nigam', ward: 'Ward 42 · Central Zone', officer: { name: 'Naina Singh', post: 'Junior Engineer · Civic Services', mobile: '+91 98765 20891', initials: 'NS', color: '#fde0d7' } }
 };
-const categories = { roads:'Road / pothole', drainage:'Drainage / garbage', streetlight:'Streetlight', highway:'Highway issue', water:'Water supply', other:'Other civic issue' };
+
+const categories = { 
+  roads:'Road / Pothole Issue', 
+  drainage:'Drainage / Waste Overflow', 
+  streetlight:'Streetlight Not Working', 
+  highway:'National Highway Defect', 
+  water:'Water Supply Contamination/Leak', 
+  other:'General Civic Concern' 
+};
+
 const manualDepartments = { pwd: officers.roads, nagar: officers.drainage, nhai: officers.highway, jalkal: officers.water };
-function getUser(){ return JSON.parse(localStorage.getItem('js_user') || 'null'); }
+
+function getUser(){ 
+  let u = JSON.parse(localStorage.getItem('js_user') || 'null');
+  if(u && u.coins === undefined){
+    u.coins = 50;
+    u.stars = 1;
+    setUser(u);
+  }
+  return u;
+}
 function setUser(v){ localStorage.setItem('js_user', JSON.stringify(v)); }
 function getComplaints(){ return JSON.parse(localStorage.getItem('js_complaints') || '[]'); }
 function setComplaints(v){ localStorage.setItem('js_complaints', JSON.stringify(v)); }
-function toast(message){ const t=$('#toast');t.textContent=message;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),3200); }
-function avatar(person, large=false){ return `<div class="avatar" style="background:${person.color||'#d8eee7'};${large?'width:64px;height:64px':''}">${person.photo?`<img src="${person.photo}" alt="${person.name}"/>`:person.initials||person.name.split(' ').map(x=>x[0]).join('').slice(0,2)}</div>`; }
-function showModal(html){ $('#modalContent').innerHTML=html; $('#modal').classList.remove('hidden'); }
-function closeModal(){ stopMedia(); $('#modal').classList.add('hidden'); }
-function stopMedia(){ if(state.stream) state.stream.getTracks().forEach(t=>t.stop()); state.stream=null; if(state.recognition) state.recognition.stop(); state.recognition=null; }
-function openRegister(){ showModal(`<h2 id="modalTitle">Create your demo account</h2><p class="sub">Your details are stored only on this device for this prototype. OTPs are simulated; no messages are sent.</p><form id="registerForm"><div class="form-grid"><label class="field">Full name<input required name="name" placeholder="e.g. Ayesha Khan" /></label><label class="field">Mobile number<input required name="mobile" inputmode="tel" pattern="[0-9+ -]{10,16}" placeholder="e.g. 9876543210" /></label><label class="field">Email address<input required name="email" type="email" placeholder="you@example.com" /></label><label class="field">Choose a password<input required name="password" type="password" minlength="4" placeholder="At least 4 characters" /></label><label class="field full">Full address<textarea required name="address" placeholder="House / street, locality, city, PIN code"></textarea></label><label class="field">Profile photo (optional)<input name="photo" type="file" accept="image/*" /></label><div class="field"><span>Verification</span><div class="otp-row"><input id="otpCode" name="otpCode" required placeholder="Enter demo OTP" /><button class="btn outline-btn" type="button" id="sendOtp">Get demo OTP</button></div></div></div><div class="notice">A demo OTP will appear on screen after you choose “Get demo OTP”. It represents both mobile and email verification.</div><div class="form-actions"><button class="btn ghost" type="button" data-action="close-modal">Cancel</button><button class="btn primary" type="submit">Create Citizen ID →</button></div></form>`); $('#sendOtp').onclick=()=>{ $('#otpCode').value='2026'; toast('Demo OTP generated: 2026 (not sent externally)'); }; $('#registerForm').onsubmit=register; }
-function register(e){e.preventDefault();const f=new FormData(e.target);if(f.get('otpCode')!=='2026'){toast('Enter demo OTP 2026 to verify.');return;}const finish=photo=>{const name=f.get('name').trim(), user={name,mobile:f.get('mobile'),email:f.get('email'),address:f.get('address'),password:f.get('password'),photo,initials:name.split(' ').map(x=>x[0]).join('').slice(0,2),citizenId:'JS-'+Math.floor(100000+Math.random()*899999),color:'#d8eee7'};setUser(user);closeModal();renderDashboard();toast(`Welcome, ${name}. Your Citizen ID is ${user.citizenId}.`)};const file=f.get('photo');if(file?.size){const r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(file)}else finish('');}
-function openLogin(){showModal(`<h2 id="modalTitle">Welcome back</h2><p class="sub">Log in to your local JanSaathi demo account.</p><form id="loginForm"><div class="form-grid"><label class="field full">Mobile or email<input required name="identity" placeholder="Your registered mobile or email" /></label><label class="field full">Password<input required type="password" name="password" placeholder="Your chosen password" /></label></div><div class="notice">New here? Register first — this demo saves the account only in this browser.</div><div class="form-actions"><button class="btn ghost" type="button" data-action="open-register">Register instead</button><button class="btn primary" type="submit">Unlock JanSaathi →</button></div></form>`);$('#loginForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),u=getUser();if(u&&(f.get('identity')===u.mobile||f.get('identity').toLowerCase()===u.email.toLowerCase())&&f.get('password')===u.password){closeModal();renderDashboard();toast('App unlocked.');}else toast('We could not match those local demo credentials.');};}
-function renderDashboard(){const u=getUser();if(!u){openRegister();return;}const cs=getComplaints();$('#app').innerHTML=`<div class="dashboard"><div class="dash-header"><a class="brand" href="#" onclick="location.reload()"><span class="brand-mark">ज</span><span>Jan<span>Saathi</span></span></a><div class="user-chip">${avatar(u)}<span>${u.name}<small style="display:block;color:#71827c;font-weight:500">${u.citizenId}</small></span><button class="btn ghost" data-action="lock">Lock app</button></div></div><div class="dash-layout"><div class="dash-title"><div><p class="eyebrow">CITIZEN DASHBOARD • DEMO</p><h1>Namaste, ${u.name.split(' ')[0]}.</h1><p>Track your civic requests and help keep your neighbourhood moving.</p></div><button class="btn primary" data-action="new-complaint">+ New complaint</button></div><div class="stats"><div class="stat"><b>${cs.length}</b><span>Total complaints</span></div><div class="stat"><b>${cs.filter(c=>c.status==='In progress').length}</b><span>In progress</span></div><div class="stat"><b>${cs.filter(c=>c.status==='Resolved').length}</b><span>Resolved</span></div><div class="stat"><b>${cs.filter(c=>c.escalated).length}</b><span>Escalated</span></div></div><div class="dash-columns"><section class="panel"><h3>Your complaints</h3>${cs.length?cs.map(card).join(''):`<div class="empty">No issues reported yet. When you do, JanSaathi will demonstrate how it gets routed and tracked here.<br><br><button class="btn primary" data-action="new-complaint">Report an issue</button></div>`}</section><aside class="panel"><h3>How this demo works</h3><p class="sub">All public-service interactions below are visual prototypes, not connections to government systems.</p><div class="officer-mini"><span>⌖</span><div><b>Location-aware routing</b><small>Category + device / demo location selects a fictional jurisdiction.</small></div></div><div class="officer-mini"><span>◌</span><div><b>Proof verification</b><small>Before/after GPS matching is a safe in-browser simulation.</small></div></div><div class="officer-mini"><span>⏱</span><div><b>SLA accountability</b><small>Timers and escalation status are illustrative only.</small></div></div></aside></div></div></div>`;}
-function card(c){return `<article class="complaint-card" data-complaint="${c.id}"><div class="card-top"><b>${c.title}</b><span class="badge ${c.status==='Resolved'?'':'orange'}">${c.status}</span></div><p>${categories[c.category]} · ${c.route.dept} · ${c.id}</p><div class="mini-progress"><span style="width:${c.status==='Resolved'?'100':'48'}%"></span></div><p style="margin-bottom:0">${c.escalated?'⚑ Escalation demo active':'Assigned to '+c.route.officer.name}</p></article>`;}
-function complaintForm(){state.mode='text';showModal(`<div class="complaint-flow"><h2 id="modalTitle">Report a civic issue</h2><p class="sub">Choose a comfortable way to describe it. Audio and speech features request browser permission only when you start them.</p><div class="mode-tabs"><button class="mode-tab active" data-mode="text"><b>⌨ Text</b>Type your description</button><button class="mode-tab" data-mode="audio"><b>🎙 Audio note</b>Record up to 30 seconds</button><button class="mode-tab" data-mode="voice"><b>◌ Voice to text</b>Speak and review text</button></div><form id="complaintForm"><div id="intake"></div><div class="form-grid"><label class="field"><span>Category</span><select name="category" required>${Object.entries(categories).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></label><label class="field"><span>Short title</span><input required name="title" maxlength="70" placeholder="e.g. Large pothole near school" /></label><label class="field full"><span>Photo, video or audio attachment (optional)</span><div class="attachment"><span>📎 Add supporting media</span><input id="attachment" type="file" accept="image/*,video/*,audio/*" /></div><div class="attach-list" id="attachmentName"></div></label></div><div class="location-box"><b>📍 Location for demo routing</b><div id="locationText">Use your browser location, or continue with a generic Ward 42 demo location.</div><button type="button" class="btn outline-btn" id="locateBtn" style="margin-top:9px">Use device location</button><div class="map-preview" id="mapPreview"></div></div><div class="notice">Department, officer and GPS proof results are mock outputs created for this demo; no complaint is sent to a real authority.</div><div class="form-actions"><button type="button" class="btn ghost" data-action="close-modal">Cancel</button><button class="btn primary" type="submit">Find responsible authority →</button></div></form></div>`);renderIntake();setupRoutingPreference();document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{state.mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));renderIntake();});$('#attachment').onchange=e=>$('#attachmentName').textContent=e.target.files[0]?`Attached: ${e.target.files[0].name}`:'';$('#locateBtn').onclick=requestLocation;$('#complaintForm').onsubmit=submitComplaint;}
-function renderIntake(){const el=$('#intake');if(state.mode==='text')el.innerHTML=`<label class="field full"><span>Describe what happened</span><textarea required id="description" name="description" placeholder="Tell us where the issue is and what you noticed…"></textarea></label>`;else if(state.mode==='audio')el.innerHTML=`<div class="record-box"><button type="button" class="record-btn" id="recordBtn" aria-label="Record audio">●</button><div><b id="recordLabel">Record a voice note</b><small style="display:block;color:#64736f;margin-top:4px">Requests microphone access only on tap. Demo captures locally, never uploads.</small></div></div><input type="hidden" name="description" id="description" value="Voice note submitted (local demo recording)." />`;else el.innerHTML=`<div class="record-box"><button type="button" class="record-btn" id="voiceBtn" aria-label="Start speech-to-text">🎙</button><div><b id="voiceLabel">Tap to speak</b><small style="display:block;color:#64736f;margin-top:4px">Uses browser speech recognition when supported. You can edit the text below.</small></div></div><label class="field full" style="margin-top:12px"><span>Recognized text</span><textarea required id="description" name="description" placeholder="Your spoken words will appear here; or type your issue."></textarea></label>`;if($('#recordBtn'))$('#recordBtn').onclick=recordAudio;if($('#voiceBtn'))$('#voiceBtn').onclick=startSpeech;}
-async function recordAudio(){try{state.stream=await navigator.mediaDevices.getUserMedia({audio:true});const button=$('#recordBtn'),label=$('#recordLabel');button.textContent='■';label.textContent='Recording… 00:00';let sec=0;const timer=setInterval(()=>{sec++;label.textContent=`Recording… 00:${String(sec).padStart(2,'0')}`;if(sec>=30){clearInterval(timer);stopMedia();button.textContent='✓';label.textContent='Voice note captured locally (demo)';}},1000);button.onclick=()=>{clearInterval(timer);stopMedia();button.textContent='✓';label.textContent='Voice note captured locally (demo)';};}catch{toast('Microphone permission was not available. You can use text instead.');}}
-function startSpeech(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Speech recognition is not supported here; please type your description.');return;}const r=new SR();state.recognition=r;r.lang='en-IN';r.interimResults=true;$('#voiceLabel').textContent='Listening…';r.onresult=e=>{$('#description').value=Array.from(e.results).map(x=>x[0].transcript).join(' ');};r.onerror=()=>{toast('Speech input ended. You can edit or type your description.');};r.onend=()=>{$('#voiceLabel').textContent='Voice-to-text ready — review your text';};r.start();}
-function requestLocation(){if(!navigator.geolocation){toast('Geolocation is unavailable; using Ward 42 demo location.');return;}$('#locationText').textContent='Requesting browser location…';navigator.geolocation.getCurrentPosition(p=>{$('#locationText').textContent=`Device location captured locally: ${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)} · mapped to Ward 42 demo.`;$('#mapPreview').dataset.coords=`${p.coords.latitude},${p.coords.longitude}`;toast('Location available for demo routing.');},()=>{$('#locationText').textContent='Location permission unavailable; using generic Ward 42 demo location.';toast('Using generic demo location.');},{timeout:8000});}
-function submitComplaint(e){e.preventDefault();const f=new FormData(e.target),category=f.get('category'),routeMode=f.get('routeMode')||'ai',manualDepartment=f.get('manualDepartment'),route=routeMode==='manual'&&manualDepartments[manualDepartment]?manualDepartments[manualDepartment]:(officers[category]||officers.other);const cs=getComplaints();const c={id:'JS-C-'+new Date().getFullYear()+'-'+String(Math.floor(1000+Math.random()*8999)),category,title:f.get('title'),description:f.get('description'),intakeMode:state.mode,routeMode,manualDepartment,route,created:new Date().toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'}),status:'In progress',escalated:false,attachment:$('#attachment')?.files[0]?.name||'',location:$('#mapPreview').dataset.coords||'Ward 42 demo location',proof:false};cs.unshift(c);setComplaints(cs);closeModal();renderDashboard();showDetail(c.id);}
-function showDetail(id){const c=getComplaints().find(x=>x.id===id);if(!c)return;const u=getUser(),o=c.route.officer,mode={text:'Text complaint',audio:'Audio-recorded complaint',voice:'AI voice-to-text complaint'}[c.intakeMode]||'Text complaint';showModal(`<div class="detail"><div class="detail-head"><div><p class="eyebrow">${c.id} • ${categories[c.category].toUpperCase()}</p><h2 id="modalTitle">${c.title}</h2><p class="sub">Submitted ${c.created} · ${c.location}</p></div><span class="badge ${c.status==='Resolved'?'':'orange'}">${c.status}</span></div><div class="route-result"><span style="font-size:27px">⌖</span><div><b>Routed in this demo to ${c.route.dept}</b><p>${c.route.ward} · ${c.routeMode==='manual'?'citizen-selected department + demo location':'AI-suggested category + geospatial simulation'}</p></div><span class="badge blue">Mock route</span></div><div class="detail-grid"><div><section class="info-box"><h4>Complaint details</h4><p class="badge blue">Intake: ${mode}</p><p style="font-size:13px;line-height:1.55">${c.description}</p>${c.attachment?`<p class="badge blue">Attachment: ${c.attachment}</p>`:''}${c.intakeMode==='voice'?'<button class="btn outline-btn" id="downloadTranscript">Download AI transcript (.txt)</button>':''}</section><section class="info-box"><h4>Tracking timeline</h4><div class="timeline"><div><b>Complaint received</b>${c.created}</div><div><b>Mock jurisdiction matched</b>${c.route.ward} → ${c.route.dept}</div><div><b>Junior Engineer assigned</b>${o.name} notified in demo workflow</div>${c.proof?`<div><b>Before/after proof GPS matched</b>Demo validation passed; awaiting citizen rating.</div>`:'<div><b>Work proof pending</b>Officer would upload geotagged before/after evidence.</div>'}</div></section><section class="info-box"><h4>Before / after proof</h4><div class="proof-stage"><b>${c.proof?'✓ Demo GPS match confirmed':'Upload sample proof to simulate GPS match'}</b><p>${c.proof?'The mock coordinates were considered within the allowed demo radius.':'Select an image; this does not upload anywhere.'}</p><input type="file" id="proofFile" accept="image/*" ${c.proof?'disabled':''}/><button class="btn outline-btn" id="validateProof" ${c.proof?'disabled':''}>Validate GPS match (demo)</button></div></section>${c.proof?ratingBox(c):''}</div><aside><section class="info-box"><h4>Assigned officer</h4><div class="contact-card">${avatar(o,true)}<div><b>${o.name}</b><p>${o.post}</p><p>${c.route.dept}</p></div></div><div class="contact-actions"><button class="btn primary" data-contact="call">☎ Call officer</button><button class="btn outline-btn" data-contact="message">✉ Contact</button></div><p class="notice">Officer data is fictional and shown only for prototype flow.</p></section><section class="info-box"><h4>Citizen details visible to officer</h4><div class="contact-card">${avatar(u)}<div><b>${u.name}</b><p>${u.mobile} · ${u.email}</p><p>${u.address}</p></div></div></section><section class="info-box"><h4>Service-level status</h4><div class="sla"><div><span class="badge ${c.escalated?'orange':''}">${c.escalated?'Escalation active':'Within demo SLA'}</span><p style="font-size:12px;color:#64736f">${c.escalated?'Mock escalation sent to supervisor':'Target resolution in 48 hours'}</p></div><strong>31:42:18</strong></div>${!c.escalated&&c.status!=='Resolved'?'<button class="btn outline-btn" id="escalateBtn">Escalate after SLA (demo)</button>':''}</section></aside></div></div>`);$('#validateProof')?.addEventListener('click',()=>proof(id));$('#escalateBtn')?.addEventListener('click',()=>escalate(id));$('#downloadTranscript')?.addEventListener('click',()=>downloadTranscript(c));document.querySelectorAll('[data-contact]').forEach(b=>b.onclick=()=>toast(`${b.dataset.contact==='call'?'Call':'Message'} action is a safe demo — ${o.mobile} is fictional.`));if(c.proof)bindRating(id);}
-function downloadTranscript(c){const text=`JanSaathi demo AI voice-to-text transcript\nComplaint ID: ${c.id}\nTitle: ${c.title}\n\n${c.description}`;const url=URL.createObjectURL(new Blob([text],{type:'text/plain'})),a=document.createElement('a');a.href=url;a.download=`${c.id}-transcript.txt`;a.click();URL.revokeObjectURL(url);toast('Local transcript text file downloaded.');}
-function proof(id){const c=getComplaints().find(x=>x.id===id);if(!$('#proofFile').files[0]){toast('Choose a proof image first.');return;}c.proof=true;c.status='Resolved';setComplaints(getComplaints().map(x=>x.id===id?c:x));toast('Demo GPS match passed — complaint marked resolved.');showDetail(id);renderDashboard();}
-function escalate(id){const cs=getComplaints(),c=cs.find(x=>x.id===id);c.escalated=true;setComplaints(cs);toast('Mock escalation recorded for supervisor review.');showDetail(id);renderDashboard();}
-function ratingBox(c){return `<section class="info-box"><h4>Rate the resolution</h4><p style="font-size:12px;color:#64736f">How were the officer's behaviour and work quality?</p><div class="rating" id="rating">${[1,2,3,4,5].map(n=>`<span data-rating="${n}" class="${n<=c.rating?'selected':''}">★</span>`).join('')}</div><label class="field" style="margin-top:9px">Written feedback<textarea id="feedback" placeholder="Share a short review…">${c.feedback||''}</textarea></label><button class="btn primary" id="saveRating" style="margin-top:10px">Save rating</button></section>`;}
-function bindRating(id){state.rating=getComplaints().find(x=>x.id===id).rating||0;document.querySelectorAll('[data-rating]').forEach(s=>s.onclick=()=>{state.rating=+s.dataset.rating;document.querySelectorAll('[data-rating]').forEach(x=>x.classList.toggle('selected',+x.dataset.rating<=state.rating));});$('#saveRating').onclick=()=>{const cs=getComplaints(),c=cs.find(x=>x.id===id);if(!state.rating){toast('Choose a star rating first.');return;}c.rating=state.rating;c.feedback=$('#feedback').value;setComplaints(cs);toast('Thank you — your local demo rating is saved.');showDetail(id);renderDashboard();};}
-document.addEventListener('click',e=>{const a=e.target.closest('[data-action]');if(a){const x=a.dataset.action;if(x==='open-register')openRegister();if(x==='open-login')openLogin();if(x==='close-modal')closeModal();if(x==='new-complaint')complaintForm();if(x==='lock'){location.reload();toast('App locked.');}}const cardEl=e.target.closest('[data-complaint]');if(cardEl)showDetail(cardEl.dataset.complaint);});$('#menuBtn').onclick=()=>$('#nav').classList.toggle('open');$('#modal').onclick=e=>{if(e.target===$('#modal'))closeModal();};
 
+function toast(message){ 
+  const t=$('#toast');
+  t.innerHTML = `<span>🇮🇳</span> <span>${message}</span>`;
+  t.classList.remove('hidden');
+  setTimeout(()=>t.classList.add('hidden'), 3500); 
+}
 
-function setupRoutingPreference(){const target=$('#intake');target.insertAdjacentHTML('afterend',`<section class="info-box" id="routingPreference"><h4>Choose department routing</h4><p style="font-size:12px;color:#64736f;margin-top:0">Choose a department yourself, or let the AI demo suggest one from your category and location.</p><label class="field"><span>Routing option</span><select name="routeMode" id="routeMode"><option value="ai">AI suggests department (recommended)</option><option value="manual">I want to choose the department</option></select></label><label class="field" id="manualDepartmentField" style="display:none;margin-top:10px"><span>Select department</span><select name="manualDepartment"><option value="pwd">Public Works Department (PWD)</option><option value="nagar">Nagar Nigam</option><option value="nhai">National Highways Authority (NHAI)</option><option value="jalkal">Jal Kal Department</option></select></label><div class="notice" id="routeHint">AI demo will use complaint category and location to suggest the most relevant fictional department.</div></section>`);$('#routeMode').onchange=e=>{const manual=e.target.value==='manual';$('#manualDepartmentField').style.display=manual?'flex':'none';$('#routeHint').textContent=manual?'Your selected department will receive this demo complaint and its fictional Junior Engineer will be assigned.':'AI demo will use complaint category and location to suggest the most relevant fictional department.';};}
+function getRandomQuote(){
+  return PATRIOTIC_QUOTES[Math.floor(Math.random()*PATRIOTIC_QUOTES.length)];
+}
 
+function avatar(person, large=false){ 
+  return `<div class="avatar" style="background:${person.color||'#d8eee7'};${large?'width:60px;height:60px;font-size:20px;':''}">${person.photo?`<img src="${person.photo}" alt="${person.name}" style="width:100%;height:100%;border-radius:50%;object-fit:cover"/>`:person.initials||person.name.split(' ').map(x=>x[0]).join('').slice(0,2)}</div>`; 
+}
+
+function showModal(html){ 
+  $('#modalContent').innerHTML=html; 
+  $('#modal').classList.remove('hidden'); 
+}
+
+function closeModal(){ 
+  stopMedia(); 
+  $('#modal').classList.add('hidden'); 
+}
+
+function stopMedia(){ 
+  if(state.stream) state.stream.getTracks().forEach(t=>t.stop()); 
+  state.stream=null; 
+  if(state.recognition) state.recognition.stop(); 
+  state.recognition=null; 
+}
+
+function applyLanguage(lang){
+  state.lang = lang;
+  localStorage.setItem('js_lang', lang);
+  const dict = I18N[lang] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if(dict[key]) el.innerHTML = dict[key];
+  });
+  if(lang === 'ur') {
+    document.body.style.fontFamily = "'Noto Nastaliq Urdu', 'DM Sans', sans-serif";
+  } else {
+    document.body.style.fontFamily = "'DM Sans', sans-serif";
+  }
+}
+
+// User Manual Guide Content
+const MANUAL_DATA = {
+  en: [
+    { title: "1. Create Account & Login", text: "Click on 'Register', fill your basic details like Name, Mobile, and Address. You can simulate OTP verification with demo code '2026' to get your unique Citizen ID." },
+    { title: "2. Voice, Audio or Text Filing", text: "Click on '+ New Complaint'. Choose your preferred mode: type in the box, speak using AI Voice-to-Text, or record a quick 30-second audio note in your regional language." },
+    { title: "3. Location & Smart Route", text: "Use your device GPS or Ward 42 demo locator. JanSaathi's geospatial logic routes your complaint straight to the responsible Junior Engineer." },
+    { title: "4. Earn Desh Seva Coins & Stars", text: "Every valid complaint gives you +50 Coins and 1 Star! When your issue gets resolved and validated via proof, you earn +100 Coins and 2 Stars for strengthening our nation." },
+    { title: "5. Download Official Print Receipt", text: "Open any filed grievance and tap 'Print / Download Official Receipt' to generate a formal PDF/printed document with complaint ID, timestamp, and assigned officer." }
+  ],
+  hi: [
+    { title: "१. खाता बनाएं और लॉगिन करें", text: "'पंजीकरण' पर क्लिक करें, नाम, मोबाइल नंबर और पता भरें। डेमो ओटीपी '2026' का उपयोग करके अपना विशिष्ट सिटिजन आईडी प्राप्त करें।" },
+    { title: "२. बोलकर, लिखकर या ऑडियो नोट से शिकायत", text: "'+ नई शिकायत' पर जाएं। अपनी सुविधा अनुसार मोड चुनें: लिखकर बताएं, माइक से बोलकर टेक्स्ट बनाएं, या 30 सेकंड का ऑडियो रिकॉर्ड करें।" },
+    { title: "३. स्मार्ट लोकेशन और विभाग आवंटन", text: "अपने डिवाइस का जीपीएस लोकेशन साझा करें। जनसाथी सिस्टम तुरंत सही नगर निगम/पीडब्ल्यूडी विभाग और संबंधित कनिष्ठ अभियंता (JE) को अलर्ट भेजता है।" },
+    { title: "४. देश सेवा कॉइन्स और स्टार्स अर्जित करें", text: "शिकायत दर्ज करने पर आपको +50 सिक्के और 1 स्टार मिलते हैं। समस्या हल होने पर +100 सिक्के और 2 स्टार मिलते हैं, जो आपको 'राष्ट्र निर्माता' का बैज दिलाते हैं।" },
+    { title: "५. आधिकारिक शिकायत रसीद डाउनलोड करें", text: "शिकायत विवरण में जाकर 'प्रिंट / रसीद डाउनलोड करें' बटन दबाएं। आप सरकारी संदर्भ के लिए इसकी पीडीएफ या प्रिंटआउट सुरक्षित रख सकते हैं।" }
+  ],
+  hinglish: [
+    { title: "1. Register & Login Process", text: "'Register' button dabayein, apna Naam, Mobile aur Pata dalein. Demo OTP '2026' dalkar turant apna unique Citizen ID generate karein." },
+    { title: "2. Issue Batane Ke 3 Easy Tareeqe", text: "New Complaint me aap type kar sakte hain, mic on karke bol sakte hain (Voice to Text), ya 30 seconds ka voice audio note submit kar sakte hain." },
+    { title: "3. Department & JE Officer Routing", text: "GPS location detect hote hi JanSaathi decide karta hai ki mamla Nagar Nigam ka hai, PWD ka ya Jal Kal ka, aur seedhe JE officer ko assign kar deta hai." },
+    { title: "4. Desh Seva Coins & Rewards", text: "Har complaint submit karne par +50 Coins aur solve hone par +100 Coins milte hain jo aapke profile me aapka Nagrik Samman badhate hain!" },
+    { title: "5. Complaint Receipt Download", text: "Detail page par 'Download Print Receipt' click karke aap apni complaint ki official slip print ya PDF save kar sakte hain." }
+  ],
+  ur: [
+    { title: "۱. اکاؤنٹ بنائیں اور لاگ ان کریں", text: "رجسٹر پر کلک کریں، اپنا نام اور پتہ درج کریں۔ ڈیمو او ٹی پی '2026' استعمال کر کے اپنا سٹیزن آئی ڈی حاصل کریں۔" },
+    { title: "۲. بول کر یا لکھ کر شکایت کا اندراج", text: "نئی شکایت پر کلک کریں۔ آپ ٹائپ کر سکتے ہیں، آواز کے ذریعے لکھوا سکتے ہیں یا وائس نوٹ ریکارڈ کر سکتے ہیں۔" },
+    { title: "۳. مقام اور محکمے کا خودکار تعین", text: "جی پی ایس کی مدد سے جن ساتھی آپ کی شکایت فوراً متعلقہ جونیئر انجینئر اور محکمے کو بھیج دیتا ہے۔" },
+    { title: "۴. دیش سیوا کوائنز اور ستارے", text: "شکایت درج کرنے پر 50 سکے اور حل ہونے پر مزید 100 سکے حاصل کریں اور ملک کی ترقی میں اپنا حصہ ڈالیں۔" },
+    { title: "۵. باضابطہ رسید ڈاؤن لوڈ کریں", text: "شکایت کی تفصیلات میں جا کر 'رسید پرنٹ کریں' پر کلک کریں اور پی ڈی ایف محفوظ کریں۔" }
+  ],
+  bn: [
+    { title: "১. অ্যাকাউন্ট তৈরি ও লগইন", text: "রেজিস্টার বোতামে ক্লিক করুন এবং আপনার বিবরণ দিন। ডেমো ওটিপি '2026' দিয়ে সিটিজেন আইডি তৈরি করুন।" },
+    { title: "২. অডিও বা টেক্সট অভিযোগ", text: "টাইপ করে, মুখে বাংলায় বলে অথবা অডিও রেকর্ড করে সহজে অভিযোগ জানাতে পারেন।" },
+    { title: "৩. সঠিক দপ্তরে অভিযোগ প্রেরণ", text: "জিপিএস লোকেশনের ভিত্তিতে সঠিক জুনিয়র ইঞ্জিনিয়ারের কাছে অভিযোগ স্বয়ংক্রিয়ভাবে পৌঁছে যায়।" },
+    { title: "৪. দেশ সেবা কয়েন ও সম্মাননা", text: "প্রতিটি অভিযোগের জন্য +৫০ কয়েন এবং সমাধান হলে +১০০ কয়েন ও স্টার অর্জন করুন!" },
+    { title: "৫. অফিসিয়াল রসিদ প্রিন্ট করুন", text: "অভিযোগের বিস্তারিত অংশ থেকে সরাসরি রসিদ ডাউনলোড ও প্রিন্ট করার সুবিধা রয়েছে।" }
+  ]
+};
+
+function openGuide(lang = state.lang){
+  const steps = MANUAL_DATA[lang] || MANUAL_DATA.en;
+  showModal(`
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <span style="font-size:32px">📖</span>
+        <div>
+          <h2 style="margin:0">JanSaathi — User Manual & Guide</h2>
+          <p class="sub" style="margin:2px 0 0">Learn how to report, track, print receipts, and earn national reward stars.</p>
+        </div>
+      </div>
+
+      <div class="guide-tabs">
+        <button class="guide-tab-btn ${lang==='en'?'active':''}" onclick="openGuide('en')">English</button>
+        <button class="guide-tab-btn ${lang==='hi'?'active':''}" onclick="openGuide('hi')">हिंदी (Hindi)</button>
+        <button class="guide-tab-btn ${lang==='hinglish'?'active':''}" onclick="openGuide('hinglish')">Hinglish</button>
+        <button class="guide-tab-btn ${lang==='ur'?'active':''}" onclick="openGuide('ur')">اردو (Urdu)</button>
+        <button class="guide-tab-btn ${lang==='bn'?'active':''}" onclick="openGuide('bn')">বাংলা (Bengali)</button>
+      </div>
+
+      <div style="margin-top:16px">
+        ${steps.map((s, idx) => `
+          <div class="guide-step">
+            <div class="guide-step-num">${idx+1}</div>
+            <div>
+              <b style="font-size:15px;display:block;margin-bottom:4px;color:var(--ink)">${s.title}</b>
+              <p style="margin:0;font-size:13.5px;color:var(--slate);line-height:1.6">${s.text}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="patriotic-banner"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+        <span style="font-size:12px;color:var(--slate)">🇮🇳 Smart India Hackathon 2026 Initiative</span>
+        <button class="btn primary" onclick="closeModal()">Got it, let's proceed →</button>
+      </div>
+    </div>
+  `);
+}
+
+function openRegister(){ 
+  showModal(`
+    <h2 id="modalTitle">Create your citizen demo account</h2>
+    <p class="sub">Store data locally on this browser. Simulated instant OTP verification.</p>
+    <form id="registerForm">
+      <div class="form-grid">
+        <label class="field">Full name<input required name="name" placeholder="e.g. Rahul Sharma" /></label>
+        <label class="field">Mobile number<input required name="mobile" inputmode="tel" pattern="[0-9+ -]{10,16}" placeholder="e.g. 9876543210" /></label>
+        <label class="field">Email address<input required name="email" type="email" placeholder="rahul@example.com" /></label>
+        <label class="field">Choose password<input required name="password" type="password" minlength="4" placeholder="Min 4 characters" /></label>
+        <label class="field full">Full address<textarea required name="address" placeholder="House/Flat No, Street, Ward, City, PIN"></textarea></label>
+        <label class="field">Profile photo (optional)<input name="photo" type="file" accept="image/*" /></label>
+        <div class="field">
+          <span>Verification</span>
+          <div class="otp-row">
+            <input id="otpCode" name="otpCode" required placeholder="Enter OTP" />
+            <button class="btn outline-btn" type="button" id="sendOtp">Get demo OTP</button>
+          </div>
+        </div>
+      </div>
+      <div class="notice">Click “Get demo OTP” to autofill demo code <b>2026</b>. Represents dual SMS/Email auth.</div>
+      <div class="form-actions">
+        <button class="btn ghost" type="button" data-action="close-modal">Cancel</button>
+        <button class="btn primary" type="submit">Create Citizen ID & Earn 50 Coins →</button>
+      </div>
+    </form>
+  `); 
+  $('#sendOtp').onclick=()=>{ 
+    $('#otpCode').value='2026'; 
+    toast('Demo OTP 2026 generated automatically!'); 
+  }; 
+  $('#registerForm').onsubmit=register; 
+}
+
+function register(e){
+  e.preventDefault();
+  const f=new FormData(e.target);
+  if(f.get('otpCode')!=='2026'){toast('Enter demo OTP 2026 to verify.');return;}
+  const finish=photo=>{
+    const name=f.get('name').trim();
+    const user={
+      name,
+      mobile:f.get('mobile'),
+      email:f.get('email'),
+      address:f.get('address'),
+      password:f.get('password'),
+      photo,
+      initials:name.split(' ').map(x=>x[0]).join('').slice(0,2),
+      citizenId:'JS-'+Math.floor(100000+Math.random()*899999),
+      color:'#d8eee7',
+      coins: 50,
+      stars: 1,
+      rank: 'Jaagruk Nagrik'
+    };
+    setUser(user);
+    closeModal();
+    renderDashboard();
+    showCelebrationModal(
+      "Jai Hind! Welcome to JanSaathi",
+      `Thank you for joining as a responsible citizen, <b>${user.name}</b>! You have received <b>50 Desh Seva Coins</b> and <b>1 Star</b> for taking the pledge to improve our society.`,
+      50,
+      1
+    );
+  };
+  const file=f.get('photo');
+  if(file?.size){
+    const r=new FileReader();
+    r.onload=()=>finish(r.result);
+    r.readAsDataURL(file);
+  }else finish('');
+}
+
+function openLogin(){
+  showModal(`
+    <h2 id="modalTitle">Welcome Back, Citizen</h2>
+    <p class="sub">Log in to your local JanSaathi account to track and report issues.</p>
+    <form id="loginForm">
+      <div class="form-grid">
+        <label class="field full">Mobile or email<input required name="identity" placeholder="Registered mobile or email" /></label>
+        <label class="field full">Password<input required type="password" name="password" placeholder="Your password" /></label>
+      </div>
+      <div class="notice">New user? Register first to save credentials on this browser.</div>
+      <div class="form-actions">
+        <button class="btn ghost" type="button" data-action="open-register">Register instead</button>
+        <button class="btn primary" type="submit">Unlock JanSaathi →</button>
+      </div>
+    </form>
+  `);
+  $('#loginForm').onsubmit=e=>{
+    e.preventDefault();
+    const f=new FormData(e.target),u=getUser();
+    if(u&&(f.get('identity')===u.mobile||f.get('identity').toLowerCase()===u.email.toLowerCase())&&f.get('password')===u.password){
+      closeModal();
+      renderDashboard();
+      toast(`Welcome back, ${u.name}!`);
+    } else {
+      toast('Invalid credentials for this local demo account.');
+    }
+  };
+}
+
+function renderDashboard(){
+  const u=getUser();
+  if(!u){openRegister();return;}
+  const cs=getComplaints();
+  
+  // Calculate Citizen Rank
+  let rank = "Jaagruk Nagrik";
+  if(u.coins >= 300) rank = "Rashtra Nirmatha (National Builder)";
+  else if(u.coins >= 150) rank = "Samarpan Champion";
+
+  $('#app').innerHTML=`
+    <div class="dashboard">
+      <div class="dash-header">
+        <a class="brand" href="#" onclick="location.reload()">
+          <span class="brand-mark">ज</span><span>Jan<span>Saathi</span></span>
+        </a>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="btn outline-btn small" data-action="open-guide">📖 Manual Guide</button>
+          <div class="user-chip">
+            ${avatar(u)}
+            <span>
+              ${u.name}
+              <small style="display:block;color:#71827c;font-weight:500">${u.citizenId}</small>
+            </span>
+          </div>
+          <button class="btn ghost small" data-action="lock">Lock</button>
+        </div>
+      </div>
+
+      <div class="dash-layout">
+        <div class="dash-title">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+              <p class="eyebrow" style="margin:0">CITIZEN DASHBOARD • NATION BUILDING</p>
+              <span class="badge-pill">🇮🇳 ${rank}</span>
+            </div>
+            <h1>Namaste, ${u.name.split(' ')[0]}.</h1>
+            <p>Your contribution keeps our neighborhoods cleaner, safer, and better organized.</p>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button class="btn primary big" data-action="new-complaint">+ File New Grievance</button>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat reward-stat">
+            <b>🪙 ${u.coins||0}</b>
+            <span>Desh Seva Coins</span>
+          </div>
+          <div class="stat reward-stat">
+            <b>⭐ ${u.stars||0}</b>
+            <span>Citizen Stars</span>
+          </div>
+          <div class="stat">
+            <b>${cs.length}</b>
+            <span>Total Reported</span>
+          </div>
+          <div class="stat">
+            <b>${cs.filter(c=>c.status==='In progress').length}</b>
+            <span>In Progress</span>
+          </div>
+          <div class="stat">
+            <b>${cs.filter(c=>c.status==='Resolved').length}</b>
+            <span>Resolved</span>
+          </div>
+        </div>
+
+        <div class="dash-columns">
+          <section class="panel">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <h3>Your Grievance History</h3>
+              <small style="color:var(--slate);font-weight:600">${cs.length} Recorded Issues</small>
+            </div>
+            ${cs.length?cs.map(card).join(''):`
+              <div class="empty">
+                No civic issues reported yet. Be a vigilant citizen — report damaged roads, leaking pipes, or broken streetlights.<br><br>
+                <button class="btn primary" data-action="new-complaint">+ Report an Issue & Earn Coins</button>
+              </div>
+            `}
+          </section>
+
+          <aside class="panel">
+            <h3>Desh Nirman Rewards</h3>
+            <p class="sub">Every verified civic contribution builds a modern, progressive India and earns honors.</p>
+            <div class="quote-box" style="margin:10px 0 16px">
+              “सच्चा नागरिक वही है जो समस्याओं पर शिकायत नहीं, समाधान में सहयोग करता है।”
+            </div>
+            <div class="officer-mini">
+              <span>🪙</span>
+              <div>
+                <b>+50 Coins & 1 Star</b>
+                <small>Earned instantly on submitting every genuine civic complaint.</small>
+              </div>
+            </div>
+            <div class="officer-mini">
+              <span>🌟</span>
+              <div>
+                <b>+100 Coins & 2 Stars</b>
+                <small>Earned upon GPS photo validation and issue resolution.</small>
+              </div>
+            </div>
+            <div class="officer-mini">
+              <span>🖨</span>
+              <div>
+                <b>Printable Official Receipt</b>
+                <small>Download official acknowledgment slip with Citizen ID & QR stamp.</small>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function card(c){
+  return `
+    <article class="complaint-card" data-complaint="${c.id}">
+      <div class="card-top">
+        <b>${c.title}</b>
+        <span class="badge ${c.status==='Resolved'?'':'orange'}">${c.status}</span>
+      </div>
+      <p>${categories[c.category]||c.category} · ${c.route.dept} · <strong>${c.id}</strong></p>
+      <div class="mini-progress"><span style="width:${c.status==='Resolved'?'100':'50'}%"></span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <small style="color:var(--slate)">${c.escalated?'⚑ Escalated to Zone Supervisor':'Assigned to: '+c.route.officer.name}</small>
+        <button class="text-link" style="font-size:12px" onclick="event.stopPropagation();printReceipt('${c.id}')">🖨 Print Slip</button>
+      </div>
+    </article>
+  `;
+}
+
+function complaintForm(){
+  state.mode='text';
+  showModal(`
+    <div class="complaint-flow">
+      <h2 id="modalTitle">Report a Civic Grievance</h2>
+      <p class="sub">Speak up in your own comfortable format. Voice notes, speech recognition or simple typing.</p>
+      
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="text"><b>⌨ Type Text</b>Write description in your language</button>
+        <button class="mode-tab" data-mode="audio"><b>🎙 Audio Note</b>Record 30s quick voice clip</button>
+        <button class="mode-tab" data-mode="voice"><b>◌ Voice to Text</b>Speak into mic & auto-transcribe</button>
+      </div>
+
+      <form id="complaintForm">
+        <div id="intake"></div>
+        
+        <div class="form-grid">
+          <label class="field">
+            <span>Issue Category</span>
+            <select name="category" required>
+              ${Object.entries(categories).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}
+            </select>
+          </label>
+          <label class="field">
+            <span>Issue Title / Summary</span>
+            <input required name="title" maxlength="70" placeholder="e.g. Dangerously open pothole on Main Road" />
+          </label>
+          <label class="field full">
+            <span>Upload Photo / Evidence (Optional)</span>
+            <div class="attachment">
+              <span>📎 Attach Photo, Video or Document</span>
+              <input id="attachment" type="file" accept="image/*,video/*" />
+            </div>
+            <div class="attach-list" id="attachmentName"></div>
+          </label>
+        </div>
+
+        <div class="location-box">
+          <b>📍 Geo-Location for Instant Routing</b>
+          <div id="locationText">Share device coordinates or default to Hazratganj Ward 42 zone.</div>
+          <button type="button" class="btn outline-btn" id="locateBtn" style="margin-top:9px">📍 Fetch My Current Location</button>
+          <div class="map-preview" id="mapPreview"></div>
+        </div>
+
+        <section class="info-box" id="routingPreference" style="margin-top:14px">
+          <h4>Routing Authority Preference</h4>
+          <label class="field">
+            <span>Routing Mode</span>
+            <select name="routeMode" id="routeMode">
+              <option value="ai">AI Auto-Geospatial Routing (Recommended)</option>
+              <option value="manual">Manual Department Selection</option>
+            </select>
+          </label>
+          <label class="field" id="manualDepartmentField" style="display:none;margin-top:10px">
+            <span>Choose Department</span>
+            <select name="manualDepartment">
+              <option value="pwd">Public Works Department (PWD)</option>
+              <option value="nagar">Nagar Nigam / Municipal Corporation</option>
+              <option value="nhai">National Highways Authority (NHAI)</option>
+              <option value="jalkal">Jal Kal Water Supply Board</option>
+            </select>
+          </label>
+        </section>
+
+        <div class="notice">
+          🇮🇳 <b>Desh Seva Incentive:</b> Submitting this verified grievance will earn you <b>+50 Coins & 1 Star</b> for making India clean and functioning!
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn ghost" data-action="close-modal">Cancel</button>
+          <button class="btn primary" type="submit">Submit Complaint & Route →</button>
+        </div>
+      </form>
+    </div>
+  `);
+
+  renderIntake();
+  
+  document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{
+    state.mode=b.dataset.mode;
+    document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
+    renderIntake();
+  });
+
+  $('#routeMode').onchange=e=>{
+    const manual = e.target.value==='manual';
+    $('#manualDepartmentField').style.display = manual ? 'flex' : 'none';
+  };
+
+  $('#attachment').onchange=e=>$('#attachmentName').textContent=e.target.files[0]?`Attached: ${e.target.files[0].name}`:'';
+  $('#locateBtn').onclick=requestLocation;
+  $('#complaintForm').onsubmit=submitComplaint;
+}
+
+function renderIntake(){
+  const el=$('#intake');
+  if(state.mode==='text') {
+    el.innerHTML=`<label class="field full"><span>Describe the problem clearly</span><textarea required id="description" name="description" placeholder="Specify landmark, how long the problem has existed, and public danger..."></textarea></label>`;
+  } else if(state.mode==='audio') {
+    el.innerHTML=`
+      <div class="record-box">
+        <button type="button" class="record-btn" id="recordBtn" aria-label="Record voice note">●</button>
+        <div>
+          <b id="recordLabel">Record a 30s Voice Note</b>
+          <small style="display:block;color:#64736f;margin-top:4px">Tap red button to speak in your preferred mother tongue (Hindi, English, etc.). Stored safely in browser.</small>
+        </div>
+      </div>
+      <input type="hidden" name="description" id="description" value="Voice note submitted (Recorded regional audio report)." />
+    `;
+    $('#recordBtn').onclick=recordAudio;
+  } else {
+    el.innerHTML=`
+      <div class="record-box">
+        <button type="button" class="record-btn" id="voiceBtn" aria-label="Start voice recognition">🎙</button>
+        <div>
+          <b id="voiceLabel">Tap Microphone to Speak</b>
+          <small style="display:block;color:#64736f;margin-top:4px">AI Speech-to-Text converts your spoken grievance into text instantly.</small>
+        </div>
+      </div>
+      <label class="field full" style="margin-top:12px">
+        <span>Transcribed Grievance Text (Edit if needed)</span>
+        <textarea required id="description" name="description" placeholder="Your spoken words will appear here..."></textarea>
+      </label>
+    `;
+    $('#voiceBtn').onclick=startSpeech;
+  }
+}
+
+async function recordAudio(){
+  try{
+    state.stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    const button=$('#recordBtn'), label=$('#recordLabel');
+    button.textContent='■';
+    label.textContent='Recording… 00:00';
+    let sec=0;
+    const timer=setInterval(()=>{
+      sec++;
+      label.textContent=`Recording… 00:${String(sec).padStart(2,'0')}`;
+      if(sec>=30){
+        clearInterval(timer);
+        stopMedia();
+        button.textContent='✓';
+        label.textContent='Audio recorded successfully! Ready to submit.';
+      }
+    },1000);
+    button.onclick=()=>{
+      clearInterval(timer);
+      stopMedia();
+      button.textContent='✓';
+      label.textContent='Audio recorded successfully! Ready to submit.';
+    };
+  }catch{
+    toast('Microphone access denied. You can type your description.');
+  }
+}
+
+function startSpeech(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){
+    toast('Speech recognition not supported in this browser. Please type.');
+    return;
+  }
+  const r=new SR();
+  state.recognition=r;
+  r.lang = state.lang === 'hi' ? 'hi-IN' : (state.lang === 'bn' ? 'bn-IN' : 'en-IN');
+  r.interimResults=true;
+  $('#voiceLabel').textContent='Listening closely… Speak now';
+  r.onresult=e=>{
+    $('#description').value = Array.from(e.results).map(x=>x[0].transcript).join(' ');
+  };
+  r.onerror=()=>toast('Speech input paused. You can edit the box directly.');
+  r.onend=()=>$('#voiceLabel').textContent='Voice transcribed. Review before submitting.';
+  r.start();
+}
+
+function requestLocation(){
+  if(!navigator.geolocation){
+    toast('Geolocation not supported. Defaulting to Ward 42 demo location.');
+    return;
+  }
+  $('#locationText').textContent='Fetching GPS coordinates…';
+  navigator.geolocation.getCurrentPosition(p=>{
+    $('#locationText').textContent=`GPS Location: ${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)} (Mapped to Ward 42 Lucknow)`;
+    $('#mapPreview').dataset.coords=`${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)}`;
+    toast('Precise coordinates attached.');
+  },()=>{
+    $('#locationText').textContent='GPS access denied. Using Ward 42 Hazratganj central location.';
+  },{timeout:7000});
+}
+
+function submitComplaint(e){
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const category=f.get('category');
+  const routeMode=f.get('routeMode')||'ai';
+  const manualDepartment=f.get('manualDepartment');
+  const route = (routeMode==='manual' && manualDepartments[manualDepartment]) ? manualDepartments[manualDepartment] : (officers[category]||officers.other);
+  
+  const cs=getComplaints();
+  const cid = 'JS-C-' + new Date().getFullYear() + '-' + String(Math.floor(1000+Math.random()*8999));
+  const c = {
+    id: cid,
+    category,
+    title: f.get('title'),
+    description: f.get('description'),
+    intakeMode: state.mode,
+    routeMode,
+    manualDepartment,
+    route,
+    created: new Date().toLocaleString('en-IN', {dateStyle:'medium', timeStyle:'short'}),
+    status: 'In progress',
+    escalated: false,
+    attachment: $('#attachment')?.files[0]?.name||'',
+    location: $('#mapPreview').dataset.coords || 'Ward 42, Central Zone (Demo GPS)',
+    proof: false,
+    rating: 0
+  };
+  cs.unshift(c);
+  setComplaints(cs);
+
+  // Award Desh Seva Reward
+  const u = getUser();
+  u.coins = (u.coins || 0) + 50;
+  u.stars = (u.stars || 0) + 1;
+  setUser(u);
+
+  closeModal();
+  renderDashboard();
+
+  // Show Thank You & Patriotic Celebration Modal
+  const q = getRandomQuote();
+  showCelebrationModal(
+    "Grievance Successfully Registered!",
+    `
+      <p style="font-size:15px;line-height:1.6;margin-bottom:12px">
+        <b>Thank you for your active support!</b> Aapka yeh prayas hamare desh aur shahar ko behtar banayega.
+      </p>
+      <div class="reward-earned">
+        <span>🪙 +50 Desh Seva Coins</span>
+        <span>⭐ +1 Star Earned</span>
+      </div>
+      <div class="quote-box">
+        ${q.quote}<br><small style="font-weight:700;margin-top:6px;display:block">— ${q.author}</small>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px">
+        <button class="btn primary" onclick="closeModal();showDetail('${c.id}')">View Complaint Tracking →</button>
+        <button class="btn outline-btn" onclick="printReceipt('${c.id}')">🖨 Download Print Receipt</button>
+      </div>
+    `,
+    50,
+    1,
+    true
+  );
+}
+
+function showCelebrationModal(title, messageHtml, coins, stars, isHtml=false){
+  showModal(`
+    <div class="celebrate-card">
+      <div class="celebrate-icon">🇮🇳</div>
+      <h2 style="font-size:26px;color:var(--ink);margin-bottom:8px">${title}</h2>
+      <div class="patriotic-banner"></div>
+      ${isHtml ? messageHtml : `
+        <p style="font-size:15px;line-height:1.6;color:var(--slate)">${messageHtml}</p>
+        <div class="reward-earned">
+          <span>🪙 +${coins} Desh Seva Coins</span>
+          <span>⭐ +${stars} Citizen Stars</span>
+        </div>
+        <div class="quote-box">${getRandomQuote().quote}</div>
+        <button class="btn primary" onclick="closeModal()" style="margin-top:10px">Continue to JanSaathi →</button>
+      `}
+    </div>
+  `);
+}
+
+function showDetail(id){
+  const c=getComplaints().find(x=>x.id===id);
+  if(!c)return;
+  const u=getUser(), o=c.route.officer;
+  const modeLabel = {text:'Written Text Grievance', audio:'Recorded Audio Clip', voice:'AI Voice-to-Text Transcription'}[c.intakeMode]||'Text Grievance';
+
+  showModal(`
+    <div class="detail">
+      <div class="detail-head">
+        <div>
+          <p class="eyebrow">${c.id} • ${categories[c.category]||c.category}</p>
+          <h2 id="modalTitle">${c.title}</h2>
+          <p class="sub">Submitted on ${c.created} · ${c.location}</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn outline-btn small" onclick="printReceipt('${c.id}')">🖨 Print / PDF Receipt</button>
+          <span class="badge ${c.status==='Resolved'?'':'orange'}">${c.status}</span>
+        </div>
+      </div>
+
+      <div class="route-result">
+        <span style="font-size:28px">⌖</span>
+        <div>
+          <b>Routed to ${c.route.dept}</b>
+          <p>${c.route.ward} · ${c.routeMode==='manual'?'Manual Citizen Allocation':'Automated Geospatial Routing'}</p>
+        </div>
+        <span class="badge blue">Verified Route</span>
+      </div>
+
+      <div class="detail-grid">
+        <div>
+          <section class="info-box">
+            <h4>Grievance Particulars</h4>
+            <span class="badge blue">${modeLabel}</span>
+            <p style="font-size:13.5px;line-height:1.6;margin:10px 0">${c.description}</p>
+            ${c.attachment?`<p class="badge blue">Attachment: ${c.attachment}</p>`:''}
+            ${c.intakeMode==='voice'?'<button class="btn outline-btn small" id="downloadTranscript" style="margin-top:8px">Download Voice Transcript (.txt)</button>':''}
+          </section>
+
+          <section class="info-box">
+            <h4>Official Tracking Pipeline</h4>
+            <div class="timeline">
+              <div>
+                <b>Complaint Formally Lodged</b>
+                <span>${c.created} · Geotag verified</span>
+              </div>
+              <div>
+                <b>Jurisdiction & Department Assigned</b>
+                <span>${c.route.ward} → ${c.route.dept}</span>
+              </div>
+              <div>
+                <b>Field Engineer Assigned</b>
+                <span>${o.name} (${o.post}) notified for inspection</span>
+              </div>
+              ${c.proof?`
+                <div>
+                  <b>Work Finished & Verified via Geotag Proof</b>
+                  <span>Before/After photo check matched coordinates. Marked as Resolved.</span>
+                </div>
+              `:`
+                <div>
+                  <b>Work Resolution in Progress</b>
+                  <span>Awaiting officer ground repair & photo geotag upload.</span>
+                </div>
+              `}
+            </div>
+          </section>
+
+          <section class="info-box">
+            <h4>Ground Repair Proof Validation</h4>
+            <div class="proof-stage">
+              <b>${c.proof?'✓ Before/After GPS Ground Match Confirmed':'Simulate Field Engineer Work Completion'}</b>
+              <p style="margin:4px 0 10px;color:var(--slate)">
+                ${c.proof?'Resolution validated within 25-meter radius tolerance.':'In this prototype, select a repaired road/light photo to simulate geotag resolution.'}
+              </p>
+              <input type="file" id="proofFile" accept="image/*" ${c.proof?'disabled':''} />
+              <button class="btn outline-btn" id="validateProof" style="margin-top:10px" ${c.proof?'disabled':''}>
+                Validate Repair & Mark Resolved (Demo)
+              </button>
+            </div>
+          </section>
+
+          ${c.proof?ratingBox(c):''}
+        </div>
+
+        <aside>
+          <section class="info-box">
+            <h4>Assigned Junior Engineer</h4>
+            <div class="contact-card">
+              ${avatar(o,true)}
+              <div>
+                <b>${o.name}</b>
+                <p>${o.post}</p>
+                <p>${c.route.dept}</p>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <button class="btn primary" data-contact="call">☎ Call Officer</button>
+              <button class="btn outline-btn" data-contact="message">✉ SMS Alert</button>
+            </div>
+            <p class="notice" style="margin-top:10px">Direct accountability: contact your area Junior Engineer during office hours (10 AM - 5 PM).</p>
+          </section>
+
+          <section class="info-box">
+            <h4>Citizen Profile on Record</h4>
+            <div class="contact-card">
+              ${avatar(u)}
+              <div>
+                <b>${u.name}</b>
+                <p>${u.mobile} · ${u.citizenId}</p>
+                <p style="font-size:11px">${u.address}</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="info-box">
+            <h4>Citizens Charter SLA Status</h4>
+            <div class="sla">
+              <div>
+                <span class="badge ${c.escalated?'orange':''}">${c.escalated?'Escalated to District Magistrate':'Within Standard SLA'}</span>
+                <p style="font-size:12px;color:#64736f;margin-top:4px">${c.escalated?'Senior inspection initiated':'Standard 48-Hour Guarantee'}</p>
+              </div>
+              <strong>${c.proof?'COMPLETED':'32:15:40'}</strong>
+            </div>
+            ${!c.escalated&&c.status!=='Resolved'?'<button class="btn outline-btn" id="escalateBtn" style="width:100%;margin-top:10px">Escalate Breach (Demo)</button>':''}
+          </section>
+        </aside>
+      </div>
+    </div>
+  `);
+
+  $('#validateProof')?.addEventListener('click',()=>resolveProof(id));
+  $('#escalateBtn')?.addEventListener('click',()=>escalate(id));
+  $('#downloadTranscript')?.addEventListener('click',()=>downloadTranscript(c));
+  
+  document.querySelectorAll('[data-contact]').forEach(b=>{
+    b.onclick=()=>toast(`Demo communication simulation — connecting to ${o.name} (${o.mobile})`);
+  });
+
+  if(c.proof) bindRating(id);
+}
+
+function resolveProof(id){
+  const cs=getComplaints();
+  const c=cs.find(x=>x.id===id);
+  c.proof = true;
+  c.status = 'Resolved';
+  setComplaints(cs);
+
+  // Bonus for resolution
+  const u = getUser();
+  u.coins = (u.coins || 0) + 100;
+  u.stars = (u.stars || 0) + 2;
+  setUser(u);
+
+  renderDashboard();
+
+  // Show Celebration & Appreciation
+  showCelebrationModal(
+    "Grievance Successfully Resolved!",
+    `
+      <p style="font-size:15px;line-height:1.6">
+        <b>Shabash! Desh ke vikas me aapka yogdan sarahniya hai!</b><br>
+        Your vigilance solved a public danger. You have earned <b>+100 Desh Seva Coins</b> and <b>2 Stars</b>.
+      </p>
+      <div class="reward-earned">
+        <span>🪙 +100 Coins</span>
+        <span>⭐ +2 Citizen Stars</span>
+      </div>
+      <div class="quote-box">
+        “जब नागरिक और प्रशासन मिलकर काम करते हैं, तब एक सशक्त और आत्मनिर्भर भारत का निर्माण होता है।”
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px">
+        <button class="btn primary" onclick="closeModal();showDetail('${id}')">Rate Officer & Close</button>
+      </div>
+    `,
+    100,
+    2,
+    true
+  );
+}
+
+function escalate(id){
+  const cs=getComplaints();
+  const c=cs.find(x=>x.id===id);
+  c.escalated = true;
+  setComplaints(cs);
+  toast('Grievance officially escalated to Executive Engineer.');
+  showDetail(id);
+  renderDashboard();
+}
+
+function ratingBox(c){
+  return `
+    <section class="info-box">
+      <h4>Rate Quality of Resolution</h4>
+      <p style="font-size:12px;color:#64736f">How prompt was the officer's work on the ground?</p>
+      <div class="rating" id="rating">
+        ${[1,2,3,4,5].map(n=>`<span data-rating="${n}" class="${n<=c.rating?'selected':''}">★</span>`).join('')}
+      </div>
+      <label class="field" style="margin-top:10px">
+        Written Citizen Feedback
+        <textarea id="feedback" placeholder="Share your experience for administrative review...">${c.feedback||''}</textarea>
+      </label>
+      <button class="btn primary" id="saveRating" style="margin-top:10px">Submit Citizen Review</button>
+    </section>
+  `;
+}
+
+function bindRating(id){
+  state.rating = getComplaints().find(x=>x.id===id).rating||0;
+  document.querySelectorAll('[data-rating]').forEach(s=>{
+    s.onclick=()=>{
+      state.rating = +s.dataset.rating;
+      document.querySelectorAll('[data-rating]').forEach(x=>x.classList.toggle('selected', +x.dataset.rating <= state.rating));
+    };
+  });
+  $('#saveRating').onclick=()=>{
+    const cs=getComplaints(), c=cs.find(x=>x.id===id);
+    if(!state.rating){toast('Please select a star rating first.');return;}
+    c.rating=state.rating;
+    c.feedback=$('#feedback').value;
+    setComplaints(cs);
+    toast('Feedback recorded. Thank you for making democracy work!');
+    showDetail(id);
+    renderDashboard();
+  };
+}
+
+function downloadTranscript(c){
+  const text=`JanSaathi Grievance AI Voice-to-Text Transcript\nComplaint ID: ${c.id}\nCategory: ${c.category}\nDate: ${c.created}\n\nTitle: ${c.title}\n\nTranscript Content:\n${c.description}\n\nAssigned Authority: ${c.route.dept} (${c.route.officer.name})`;
+  const url=URL.createObjectURL(new Blob([text],{type:'text/plain'}));
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`${c.id}-Transcript.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Transcript text file downloaded.');
+}
+
+// Official Print Receipt Generator
+function printReceipt(id){
+  const c = getComplaints().find(x=>x.id===id);
+  const u = getUser();
+  if(!c || !u) return;
+
+  const printArea = $('#printSlipArea');
+  printArea.innerHTML = `
+    <div style="max-width:760px;margin:auto;border:2px solid #073b4c;padding:30px;font-family:'DM Sans',sans-serif;line-height:1.5">
+      <div style="text-align:center;border-bottom:2px solid #073b4c;padding-bottom:15px;margin-bottom:20px">
+        <h1 style="margin:0;font-size:26px;color:#073b4c">जनसाथी — JanSaathi Civic Grievance Portal</h1>
+        <p style="margin:4px 0 0;font-size:13px;color:#555">Official Citizen Grievance Acknowledgement Receipt • Smart India Hackathon 2026</p>
+        <div style="margin-top:8px;font-weight:700;color:#ef765b">GOVERNMENT DEPT. ROUTING & ACKNOWLEDGEMENT SLIP</div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;margin-bottom:18px;font-size:13px">
+        <div>
+          <b>Complaint ID:</b> <span style="font-size:16px;color:#073b4c">${c.id}</span><br>
+          <b>Date of Filing:</b> ${c.created}<br>
+          <b>SLA Resolution Target:</b> 48 Hours
+        </div>
+        <div style="text-align:right">
+          <b>Citizen ID:</b> ${u.citizenId}<br>
+          <b>Citizen Name:</b> ${u.name}<br>
+          <b>Registered Mobile:</b> ${u.mobile}
+        </div>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;margin:18px 0;font-size:13px">
+        <tr style="background:#f2f7f5">
+          <th style="border:1px solid #ccc;padding:10px;text-align:left;width:30%">Parameter</th>
+          <th style="border:1px solid #ccc;padding:10px;text-align:left">Details</th>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Grievance Title</b></td>
+          <td style="border:1px solid #ccc;padding:10px"><b>${c.title}</b></td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Category</b></td>
+          <td style="border:1px solid #ccc;padding:10px">${categories[c.category]||c.category}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Description</b></td>
+          <td style="border:1px solid #ccc;padding:10px">${c.description}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Location / GPS Coordinates</b></td>
+          <td style="border:1px solid #ccc;padding:10px">${c.location}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Assigned Department</b></td>
+          <td style="border:1px solid #ccc;padding:10px"><b>${c.route.dept}</b> (${c.route.ward})</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Junior Engineer In-Charge</b></td>
+          <td style="border:1px solid #ccc;padding:10px">${c.route.officer.name} (${c.route.officer.post}) - Contact: ${c.route.officer.mobile}</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #ccc;padding:10px"><b>Status</b></td>
+          <td style="border:1px solid #ccc;padding:10px"><b style="color:${c.status==='Resolved'?'green':'#d97706'}">${c.status.toUpperCase()}</b></td>
+        </tr>
+      </table>
+
+      <div style="background:#fff7e6;border-left:4px solid #f7c948;padding:12px;margin:20px 0;font-size:12px">
+        <b>National Citizen Honor Note:</b> “Thank you for being a vigilant citizen. Your active participation in reporting civic issues directly drives our nation's progress and transparency.”
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:35px;font-size:12px;color:#555">
+        <div>
+          <span>Digitally generated & authenticated receipt.</span><br>
+          <span>Official JanSaathi Civic Network Portal</span>
+        </div>
+        <div style="text-align:center">
+          <div style="width:120px;border-bottom:1px dashed #000;margin-bottom:4px"></div>
+          <span>Competent Authority Seal / Stamp</span>
+        </div>
+      </div>
+    </div>
+  `;
+  window.print();
+}
+
+// Global Event Listeners
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-action]');
+  if(a){
+    const x=a.dataset.action;
+    if(x==='open-register') openRegister();
+    if(x==='open-login') openLogin();
+    if(x==='open-guide') openGuide(state.lang);
+    if(x==='close-modal') closeModal();
+    if(x==='new-complaint') complaintForm();
+    if(x==='lock'){ location.reload(); toast('Session securely locked.'); }
+  }
+  const cardEl=e.target.closest('[data-complaint]');
+  if(cardEl) showDetail(cardEl.dataset.complaint);
+});
+
+$('#langSwitch').onchange=e=>applyLanguage(e.target.value);
+$('#menuBtn').onclick=()=>$('#nav').classList.toggle('open');
+$('#modal').onclick=e=>{ if(e.target===$('#modal')) closeModal(); };
+
+// Init
+window.addEventListener('DOMContentLoaded', () => {
+  $('#langSwitch').value = state.lang;
+  applyLanguage(state.lang);
+  if(getUser()) renderDashboard();
+});
   </script>
 </body>
 </html>
